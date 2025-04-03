@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const connectDb = require('./utils/db');
 const counselorRouter = require("./router/counselor-router");
+const adminRouter = require("./router/admin-router");
+const clientRouter = require("./router/client-router");
 const { errorMiddleware } = require("./middlewares/counselor-middleware");
 
 const Port = process.env.PORT || 8000;
@@ -21,7 +23,8 @@ app.use(express.json());
 // app.use('/api/counselors', counselorRouter)
 // Routes (no express.json() or body-parser here, let multer handle it)
 app.use("/api/counselors", counselorRouter);;
-
+app.use("/api/admin", adminRouter);
+app.use("/api/clients", clientRouter);
 // Global Error Handler
 app.use(errorMiddleware);
 

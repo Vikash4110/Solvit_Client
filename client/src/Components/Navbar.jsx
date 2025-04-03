@@ -1,137 +1,164 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaUser, FaSignInAlt } from 'react-icons/fa'; // Import React Icons
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes, FaUserTie, FaUser } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Framer Motion Variants
+  const logoVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const navItemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
+
+  const buttonVariants = {
+    hover: { scale: 1.05, transition: { duration: 0.3 } },
+    tap: { scale: 0.95 },
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
+  };
+
   return (
-    <nav className="bg-gradient-to-r from-indigo-700 via-blue-700 to-indigo-600 shadow-xl sticky top-0 z-50">
+    <nav className="bg-teal-600 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <div className="flex-shrink-0">
+          <motion.div
+            className="flex-shrink-0"
+            initial="hidden"
+            animate="visible"
+            variants={logoVariants}
+          >
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-3xl font-extrabold text-white font-poppins tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+              <span className="text-3xl font-extrabold text-white tracking-tight">
                 Solvit
               </span>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center">
-            <div className="ml-12 flex items-baseline space-x-10">
-              <Link
-                to="/"
-                className="text-white hover:text-blue-200 px-4 py-2 rounded-lg text-base font-semibold font-poppins transition duration-300 ease-in-out transform hover:-translate-y-1"
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className="text-white hover:text-blue-200 px-4 py-2 rounded-lg text-base font-semibold font-poppins transition duration-300 ease-in-out transform hover:-translate-y-1"
-              >
-                About
-              </Link>
-              <Link
-                to="/counsellors"
-                className="text-white hover:text-blue-200 px-4 py-2 rounded-lg text-base font-semibold font-poppins transition duration-300 ease-in-out transform hover:-translate-y-1"
-              >
-                Counsellors
-              </Link>
-              <Link
-                to="/contact"
-                className="text-white hover:text-blue-200 px-4 py-2 rounded-lg text-base font-semibold font-poppins transition duration-300 ease-in-out transform hover:-translate-y-1"
-              >
-                Contact
-              </Link>
-            </div>
+            <motion.div
+              className="ml-12 flex items-baseline space-x-10"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+            >
+              {["Home", "About", "Counselors", "Contact"].map((item, index) => (
+                <motion.div key={index} variants={navItemVariants}>
+                  <Link
+                    to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                    className="text-white hover:text-teal-200 px-4 py-2 rounded-lg text-base font-semibold transition duration-300 ease-in-out"
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-5">
-            <Link
-              to="/login"
-              className="text-blue-500 hover:text-blue-200 px-5 py-2.5 rounded-full text-base font-semibold font-poppins border-2 border-white hover:border-blue-200 transition duration-300 ease-in-out flex items-center space-x-2 bg-opacity-20 bg-white backdrop-blur-sm"
-            >
-              <FaUser className="w-4 h-4" />
-              <span>Login</span>
-            </Link>
-            <Link
-              to="/signup"
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-5 py-2.5 rounded-full text-base font-semibold font-poppins hover:from-blue-600 hover:to-indigo-600 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2"
-            >
-              <FaSignInAlt className="w-4 h-4" />
-              <span>Sign Up</span>
-            </Link>
+            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+              <Link
+                to="/counselor-login"
+                className="text-teal-600 bg-white px-5 py-2 rounded-lg text-base font-semibold border-2 border-teal-600 hover:bg-teal-50 transition duration-300 flex items-center space-x-2 shadow-md"
+              >
+                <FaUserTie className="w-4 h-4" />
+                <span>Login as Counselor</span>
+              </Link>
+            </motion.div>
+            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+              <Link
+                to="/client-login"
+                className="bg-teal-700 text-white px-5 py-2 rounded-lg text-base font-semibold hover:bg-teal-800 transition duration-300 flex items-center space-x-2 shadow-md"
+              >
+                <FaUser className="w-4 h-4" />
+                <span>Login as Client</span>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button
+            <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-full text-white hover:text-blue-200 hover:bg-indigo-800 focus:outline-none transition duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-full text-white hover:text-teal-200 hover:bg-teal-700 focus:outline-none transition duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <FaBars className="h-7 w-7" />
-              ) : (
-                <FaTimes className="h-7 w-7" />
-              )}
-            </button>
+              {!isOpen ? <FaBars className="h-7 w-7" /> : <FaTimes className="h-7 w-7" />}
+            </motion.button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-indigo-700/95 backdrop-blur-md">
+        <motion.div
+          className="md:hidden bg-teal-600 shadow-lg"
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={mobileMenuVariants}
+        >
           <div className="px-4 pt-4 pb-6 space-y-3">
-            <Link
-              to="/"
-              className="text-white hover:text-blue-200 block px-4 py-3 rounded-lg text-lg font-medium font-poppins transition duration-300 bg-indigo-800/50 hover:bg-indigo-800"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="text-white hover:text-blue-200 block px-4 py-3 rounded-lg text-lg font-medium font-poppins transition duration-300 bg-indigo-800/50 hover:bg-indigo-800"
-            >
-              About
-            </Link>
-            <Link
-              to="/counsellors"
-              className="text-white hover:text-blue-200 block px-4 py-3 rounded-lg text-lg font-medium font-poppins transition duration-300 bg-indigo-800/50 hover:bg-indigo-800"
-            >
-              Counsellors
-            </Link>
-            <Link
-              to="/contact"
-              className="text-white hover:text-blue-200 block px-4 py-3 rounded-lg text-lg font-medium font-poppins transition duration-300 bg-indigo-800/50 hover:bg-indigo-800"
-            >
-              Contact
-            </Link>
+            {["Home", "About", "Counselors", "Contact"].map((item, index) => (
+              <motion.div key={index} variants={navItemVariants}>
+                <Link
+                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  className="text-white hover:text-teal-200 block px-4 py-3 rounded-lg text-lg font-medium transition duration-300 hover:bg-teal-700"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </Link>
+              </motion.div>
+            ))}
             <div className="pt-4 space-y-3">
-              <Link
-                to="/login"
-                className="text-blue-200 hover:text-blue-200 block px-4 py-3 rounded-lg text-lg font-medium font-poppins border-2 border-white hover:border-blue-200 transition duration-300 flex items-center space-x-2 bg-opacity-20 bg-white"
-              >
-                <FaUser className="w-5 h-5" />
-                <span>Login</span>
-              </Link>
-              <Link
-                to="/signup"
-                className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white block px-4 py-3 rounded-lg text-lg font-medium font-poppins hover:from-blue-600 hover:to-indigo-600 transition duration-300 flex items-center space-x-2 shadow-lg"
-              >
-                <FaSignInAlt className="w-5 h-5" />
-                <span>Sign Up</span>
-              </Link>
+              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                <Link
+                  to="/counselor-login"
+                  className="text-teal-600 bg-white block px-4 py-3 rounded-lg text-lg font-medium border-2 border-teal-600 hover:bg-teal-50 transition duration-300 flex items-center space-x-2 shadow-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FaUserTie className="w-5 h-5" />
+                  <span>Login as Counselor</span>
+                </Link>
+              </motion.div>
+              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                <Link
+                  to="/client-login"
+                  className="bg-teal-700 text-white block px-4 py-3 rounded-lg text-lg font-medium hover:bg-teal-800 transition duration-300 flex items-center space-x-2 shadow-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FaUser className="w-5 h-5" />
+                  <span>Login as Client</span>
+                </Link>
+              </motion.div>
+              
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );
+};
+
+// Container Variants for Desktop Nav
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 export default Navbar;
