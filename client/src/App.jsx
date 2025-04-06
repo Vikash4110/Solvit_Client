@@ -15,7 +15,9 @@ import ClientRegister from "./Pages/ClientRegister";
 import ClientLogin from "./Pages/ClientLogin";
 import ClientDashboard from "./Pages/ClientDashboard";
 import ClientProfile from "./Pages/ClientProfile";
-ClientProfile
+
+import NotFoundPage from "./Pages/NotFoundPage";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Start false, update based on session
@@ -56,6 +58,8 @@ function App() {
           {/* AdminRoutes */}
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/admin-login" element={<AdminLogin />} /> 
+          {/* 404 ErrorPage */}
+          <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route for 404 */}
         </Routes>
       </div>
     </AuthProvider>

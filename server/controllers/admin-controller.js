@@ -2,6 +2,8 @@
 const Counselor = require("../models/counselor-model");
 const Admin = require("../models/admin-model");
 const { sendEmail } = require("../utils/email");
+const mongoose = require("mongoose"); // Add this import
+const GridFSBucket = require("gridfs-stream"); // Add this import
 
 const loginAdmin = async (req, res, next) => {
   try {
@@ -57,8 +59,27 @@ const updateApplicationStatus = async (req, res, next) => {
   }
 };
 
+const getFile = async (req, res, next) => {
+  try {
+    const gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: "uploads" });
+    const fileId = new mongoose.Types.ObjectId(req.params.fileId);
+    const file = await gfs.find({ _id: fileId }).toArray();
+
+    if (!file || file.length === 0) {
+      return res.status(404).json({ message: "File not found" });
+    }
+
+    res.set("Content-Type", file[0].contentType || "application/octet-stream");
+    res.set("Content-Disposition", `attachment; filename="${file[0].filename}"`);
+    gfs.openDownloadStream(fileId).pipe(res);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   loginAdmin,
   getPendingApplications,
   updateApplicationStatus,
+  getFile
 };
