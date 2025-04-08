@@ -45,7 +45,7 @@ const ClientLogin = () => {
       toast.success("Login successful! Redirecting...");
 
       // Navigate immediately; useEffect in auth.js will fetch the profile
-      navigate("/client-profile");
+      navigate("/client-dashboard");
     } catch (error) {
       console.error("Login error:", error);
       toast.error(error.message);

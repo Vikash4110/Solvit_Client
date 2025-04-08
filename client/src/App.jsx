@@ -15,6 +15,8 @@ import ClientRegister from "./Pages/ClientRegister";
 import ClientLogin from "./Pages/ClientLogin";
 import ClientDashboard from "./Pages/ClientDashboard";
 import ClientProfile from "./Pages/ClientProfile";
+import FindCounselors from "./Components/FindCounselor";
+import CounselorProfile from "./Components/CounselorShowProfile";
 
 import NotFoundPage from "./Pages/NotFoundPage";
 
@@ -50,11 +52,13 @@ function App() {
           <Route path="/counselor-application" element={<Application />} />
           <Route path="/counselor-profile" element={<Profile />} />
           <Route path="/counselor-dashboard" element={<CounselorDashboard />} /> 
+          <Route path="/find-counselors" element={<FindCounselors />} />
           {/* ClientRoutes */}
           <Route path="/client-register" element={<ClientRegister />} />
           <Route path="/client-login" element={<ClientLogin />} />
           <Route path="/client-dashboard" element={<ClientDashboard />} />
           <Route path="/client-profile" element={<ClientProfile />} />
+          <Route path="/counselor-profile/:counselorId" element={<CounselorProfile />} />
           {/* AdminRoutes */}
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/admin-login" element={<AdminLogin />} /> 

@@ -1,1 +1,4 @@
 @import "tailwindcss";
+body {
+    padding-top: 72px; /* Matches navbar height: py-3 (24px) + content (~48px) */
+  }

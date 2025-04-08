@@ -1,4 +1,5 @@
 const Client = require("../models/client-model");
+const Counselor = require("../models/counselor-model");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { Readable } = require("stream");
@@ -7,7 +8,7 @@ const { sendEmail } = require("../utils/email");
 
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 },
 }).single("profilePicture");
 
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
@@ -34,11 +35,10 @@ const registerClient = [
   },
   async (req, res, next) => {
     try {
-      // Preprocess req.body to handle FormData string values
       const processedBody = {
         ...req.body,
-        termsAccepted: req.body.termsAccepted === "true", // Convert string "true"/"false" to boolean
-        howHeardAboutUs: req.body.howHeardAboutUs || "", // Ensure empty string if not provided
+        termsAccepted: req.body.termsAccepted === "true",
+        howHeardAboutUs: req.body.howHeardAboutUs || "",
       };
 
       console.log("Incoming registration data:", JSON.stringify(processedBody, null, 2));
@@ -51,7 +51,6 @@ const registerClient = [
         return res.status(400).json({ message: "Email or username already registered" });
       }
 
-      // Use mongoose.mongo.GridFSBucket for GridFS operations
       const gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: "uploads" });
       let profilePictureId = null;
 
@@ -75,7 +74,7 @@ const registerClient = [
         ...validatedData,
         profilePicture: profilePictureId,
         otp,
-        expiresAt: Date.now() + 10 * 60 * 1000, // 10-minute expiration
+        expiresAt: Date.now() + 10 * 60 * 1000,
       };
 
       req.app.locals.tempClients = req.app.locals.tempClients || {};
@@ -208,11 +207,12 @@ const resetPassword = async (req, res, next) => {
 
 const getProfile = async (req, res, next) => {
   try {
+    if (!req.user || !req.user.userId) {
+      return res.status(401).json({ message: "Unauthorized: No user ID in token" });
+    }
     const client = await Client.findById(req.user.userId).select("-password");
     if (!client) {
-      const error = new Error("Client not found");
-      error.status = 404;
-      throw error;
+      return res.status(404).json({ message: "Client not found" });
     }
     console.log("Fetched profile data:", JSON.stringify(client.toObject(), null, 2));
     res.json(client);
@@ -229,9 +229,7 @@ const getFile = async (req, res, next) => {
     const file = await gfs.find({ _id: fileId }).toArray();
 
     if (!file || file.length === 0) {
-      const error = new Error("File not found");
-      error.status = 404;
-      throw error;
+      return res.status(404).json({ message: "File not found" });
     }
 
     res.set("Content-Type", file[0].contentType || "application/octet-stream");
@@ -239,6 +237,63 @@ const getFile = async (req, res, next) => {
     gfs.openDownloadStream(fileId).pipe(res);
   } catch (error) {
     console.error("File fetch error:", error);
+    next(error);
+  }
+};
+
+const findCounselors = async (req, res, next) => {
+  try {
+    const { search = "", specialization = "", language = "", sessionMode = "", _id } = req.query;
+
+    const query = { status: "Approved" };
+    if (_id) {
+      query._id = _id;
+    } else {
+      if (search) {
+        query.$or = [
+          { fullName: { $regex: search, $options: "i" } },
+          { specialization: { $regex: search, $options: "i" } },
+        ];
+      }
+      if (specialization) query.specialization = { $in: [specialization] };
+      if (language) query.languages = { $in: [language] };
+      if (sessionMode) query.preferredSessionMode = { $in: [sessionMode] };
+    }
+
+    const counselors = await Counselor.find(query)
+      .select(
+        "fullName specialization languages preferredSessionMode yearsOfExperience profilePicture email gender dob highestQualification isLicensed licenseDetails pricing paymentMethod bio availability"
+      )
+      .lean();
+
+    res.json(counselors);
+  } catch (error) {
+    console.error("Find counselors error:", error);
+    next(error);
+  }
+};
+// New function to fetch counselor profile pictures for clients
+const getCounselorFile = async (req, res, next) => {
+  try {
+    const gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: "uploads" });
+    const fileId = new mongoose.Types.ObjectId(req.params.fileId);
+
+    // Optional: Verify the file belongs to a counselor
+    const counselor = await Counselor.findOne({ profilePicture: fileId });
+    if (!counselor) {
+      return res.status(403).json({ message: "File not associated with any counselor" });
+    }
+
+    const file = await gfs.find({ _id: fileId }).toArray();
+    if (!file || file.length === 0) {
+      return res.status(404).json({ message: "File not found" });
+    }
+
+    res.set("Content-Type", file[0].contentType || "application/octet-stream");
+    res.set("Content-Disposition", `inline; filename="${file[0].filename}"`);
+    gfs.openDownloadStream(fileId).pipe(res);
+  } catch (error) {
+    console.error("Counselor file fetch error:", error);
     next(error);
   }
 };
@@ -251,4 +306,6 @@ module.exports = {
   resetPassword,
   getProfile,
   getFile,
+  findCounselors,
+  getCounselorFile
 };
