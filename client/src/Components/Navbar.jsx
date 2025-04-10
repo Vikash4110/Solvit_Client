@@ -18,7 +18,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../Store/auth";
 import { toast } from "sonner";
-
+import logo from '../assets/Screenshot 2025-04-10 at 4.23.17 PM.png'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -103,10 +103,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <motion.div className="flex items-center space-x-3">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="bg-gradient-to-r from-teal-600 to-emerald-600 p-2 rounded-lg">
-                <FaComments className="h-6 w-6 text-white" />
-              </div>
+            <Link to="/" className="flex items-center space-x-2">  
+                {/* <FaComments className="h-6 w-6 text-white" /> */}
+                <img src={logo} className="h-14 w-14 text-white" alt="" />     
               <motion.span className="text-2xl font-bold text-gray-800">
                 <span className="text-teal-600">Solvit</span>
               </motion.span>

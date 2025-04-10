@@ -67,7 +67,7 @@ const HeroSection = () => {
                   className="bg-gradient-to-r from-teal-600 to-teal-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center space-x-3 hover:bg-teal-800 transition duration-300 shadow-md"
                 >
                   <FaUserPlus className="w-5 h-5" />
-                  <span>Become a Counselor</span>
+                  <span>Join as a Counselor</span>
                 </Link>
               </motion.div>
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
@@ -76,7 +76,7 @@ const HeroSection = () => {
                   className="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg font-semibold flex items-center space-x-3 hover:bg-teal-50 transition duration-300 shadow-md"
                 >
                   <FaComments className="w-5 h-5" />
-                  <span>Become a Client</span>
+                  <span>Talk to a Counselor</span>
                 </Link>
               </motion.div>
             </motion.div>

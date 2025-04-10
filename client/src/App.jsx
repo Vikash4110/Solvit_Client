@@ -17,7 +17,7 @@ import ClientDashboard from "./Pages/ClientDashboard";
 import ClientProfile from "./Pages/ClientProfile";
 import FindCounselors from "./Components/FindCounselor";
 import CounselorProfile from "./Components/CounselorShowProfile";
-
+import AboutUs from './Components/AboutUs'
 import NotFoundPage from "./Pages/NotFoundPage";
 
 
@@ -47,6 +47,7 @@ function App() {
         <Routes>
         {/* CounselorRoutes */}
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/counselor-register" element={<Register />} />
           <Route path="/counselor-login" element={<Login />} />
           <Route path="/counselor-application" element={<Application />} />
