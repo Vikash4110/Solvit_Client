@@ -3,6 +3,7 @@ import HeroSection from "../Components/HeroSection";
 import OurServices from "../Components/OurServices";
 import WhySolvit from "../Components/WhySolvit";
 import OurMission from "../Components/OurMission";
+import HowItWorks from "../Components/HowItWorks";
 import Review from "../Components/Review";
 import Footer from "../Components/Footer";
 import AOS from "aos";
@@ -24,6 +25,7 @@ const Home = () => {
       <HeroSection />
       <OurServices />
       <OurMission />
+      <HowItWorks />
       <WhySolvit />
       <Review />
       <Footer />
