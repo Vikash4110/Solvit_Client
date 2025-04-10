@@ -21,12 +21,12 @@ const HeroSection = () => {
 
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.2, ease: "easeOut" } },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, delay: 0.3, ease: "easeOut" } },
   };
 
   const buttonVariants = {
@@ -35,27 +35,27 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="bg-gray-100 py-20 min-h-screen flex items-center">
+    <section className="bg-gradient-to-b from-gray-50 to-teal-50 py-24 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Left Side - Text and Buttons */}
-          <div className="space-y-8" data-aos="fade-up">
+          <div className="space-y-10" data-aos="fade-up">
             <motion.h1
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-teal-400 to-teal-600 bg-clip-text text-transparent leading-tight"
+              className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-teal-600 via-teal-400 to-indigo-600 bg-clip-text text-transparent leading-tight tracking-tight"
               variants={textVariants}
             >
-              Empowering Lives with Expert Guidance
+              Empowering Your Journey with Expert Support
             </motion.h1>
             <motion.p
-              className="text-lg text-gray-600 max-w-md font-medium leading-relaxed"
+              className="text-xl text-gray-700 max-w-lg font-medium leading-relaxed"
               variants={textVariants}
             >
-              Solvit connects you with verified counselors and coaches to overcome challenges—affordable, flexible, and stigma-free.
+              Solvit connects you with verified counselors and coaches to navigate life’s challenges—accessible, affordable, and stigma-free.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6"
@@ -64,7 +64,7 @@ const HeroSection = () => {
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Link
                   to="/counselor-register"
-                  className="bg-gradient-to-r from-teal-600 to-teal-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center space-x-3 hover:bg-teal-800 transition duration-300 shadow-md"
+                  className="bg-gradient-to-r from-teal-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:from-teal-700 hover:to-indigo-700 transition-all duration-300 shadow-lg"
                 >
                   <FaUserPlus className="w-5 h-5" />
                   <span>Join as a Counselor</span>
@@ -73,7 +73,7 @@ const HeroSection = () => {
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Link
                   to="/client-register"
-                  className="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg font-semibold flex items-center space-x-3 hover:bg-teal-50 transition duration-300 shadow-md"
+                  className="border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:bg-teal-50 hover:border-teal-700 transition-all duration-300 shadow-lg"
                 >
                   <FaComments className="w-5 h-5" />
                   <span>Talk to a Counselor</span>
@@ -88,11 +88,12 @@ const HeroSection = () => {
               <img
                 src={heroImage}
                 alt="Counseling Support"
-                className="w-full max-w-md mx-auto rounded-xl object-cover "
+                className="w-full max-w-lg mx-auto rounded-2xl object-cover  transform hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
-            {/* Subtle Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-200 rounded-full opacity-20 -z-10"></div>
+            {/* Decorative Elements */}
+            <div className="absolute -top-8 -left-8 w-40 h-40 bg-teal-200 rounded-full opacity-20 blur-xl -z-10"></div>
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-200 rounded-full opacity-20 blur-xl -z-10"></div>
           </div>
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import WhySolvit from "../Components/WhySolvit";
 import OurMission from "../Components/OurMission";
 import HowItWorks from "../Components/HowItWorks";
 import Review from "../Components/Review";
+import Faq from "../Components/Faq";
 import Footer from "../Components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -28,6 +29,7 @@ const Home = () => {
       <HowItWorks />
       <WhySolvit />
       <Review />
+      <Faq />
       <Footer />
     </>
   );
