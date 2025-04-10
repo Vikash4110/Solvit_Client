@@ -7,6 +7,6 @@ import { Toaster } from "sonner"; // Correct import
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
-    <Toaster position="top-right" richColors />
+    <Toaster position="top-center" richColors />
   </BrowserRouter>
 );
