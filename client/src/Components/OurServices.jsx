@@ -90,13 +90,25 @@ const OurServices = () => {
 
   const headerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-    hover: { scale: 1.05, boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)", transition: { duration: 0.3 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+    hover: {
+      scale: 1.05,
+      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
+      transition: { duration: 0.3 },
+    },
   };
 
   const listItemVariants = {
@@ -106,7 +118,11 @@ const OurServices = () => {
 
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
     hover: { scale: 1.05, transition: { duration: 0.3 } },
     tap: { scale: 0.95 },
   };
@@ -122,16 +138,26 @@ const OurServices = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div className="text-center mb-12" variants={containerVariants}>
-          <motion.h2 className="text-4xl font-bold text-gray-800 mb-4" variants={headerVariants}>
+          <motion.h2
+            className="text-4xl font-bold text-gray-800 mb-4"
+            variants={headerVariants}
+          >
             Our Services
           </motion.h2>
-          <motion.p className="text-lg text-gray-600 max-w-2xl mx-auto" variants={headerVariants}>
-            Discover expert counseling and coaching tailored to your needs, delivered by verified professionals.
+          <motion.p
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            variants={headerVariants}
+          >
+            Discover expert counseling and coaching tailored to your needs,
+            delivered by verified professionals.
           </motion.p>
         </motion.div>
 
         {/* Services Grid */}
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants}>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -143,7 +169,9 @@ const OurServices = () => {
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md mb-4 mx-auto"
                 variants={headerVariants}
               >
-                <span className={`text-2xl ${service.color}`}>{service.icon}</span>
+                <span className={`text-2xl ${service.color}`}>
+                  {service.icon}
+                </span>
               </motion.div>
               <motion.h3
                 className="text-xl font-semibold text-gray-800 text-center mb-3"
@@ -151,7 +179,10 @@ const OurServices = () => {
               >
                 {service.title}
               </motion.h3>
-              <motion.ul className="text-gray-600 space-y-2" variants={containerVariants}>
+              <motion.ul
+                className="text-gray-600 space-y-2"
+                variants={containerVariants}
+              >
                 {service.description.map((item, idx) => (
                   <motion.li
                     key={idx}
@@ -176,7 +207,7 @@ const OurServices = () => {
             whileHover="hover"
             whileTap="tap"
           >
-            Get Started Today
+            vikash bahara is one the s Get Started Today
           </motion.a>
         </motion.div>
       </div>
