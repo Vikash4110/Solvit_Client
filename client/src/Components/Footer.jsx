@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import logo from '../assets/Red Simple & Circular YouTube Logo.jpeg'
 
 // Define social media links (replace with your actual URLs)
 const socialLinks = [
@@ -52,24 +53,13 @@ const Footer = () => {
           <motion.div className="space-y-6" variants={sectionVariants}>
             <motion.div className="flex items-center space-x-3" variants={sectionVariants}>
               <div className="flex items-center space-x-2">
-                <motion.div
-                  className="bg-white w-6 h-6 rounded-full shadow-lg"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
-                <motion.div
-                  className="bg-teal-300 w-4 h-4 rounded-full shadow-lg"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                />
+            
               </div>
               <motion.span
                 className="text-3xl font-extrabold tracking-tight text-white"
                 variants={sectionVariants}
               >
-                Solvit
+            <img src={logo} className="h-24 w-24 text-white" alt="" />     
               </motion.span>
             </motion.div>
             <motion.p
