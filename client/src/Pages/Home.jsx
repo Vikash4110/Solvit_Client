@@ -25,7 +25,7 @@ const Home = () => {
     <>
       <HeroSection />
       <OurServices />
-      <OurMission />
+      {/* <OurMission /> */}
       <HowItWorks />
       <WhySolvit />
       <Review />

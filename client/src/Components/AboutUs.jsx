@@ -12,6 +12,7 @@ import {
 import { GiBrain } from 'react-icons/gi';
 import teamPlaceholder from '../assets/vecteezy_two-women-sitting-in-chairs-talking_57226176.png'; // Replace with your image
 import aboutHero from '../assets/vecteezy_wonderful-traditional-group-of-students-studying-together-in_57440118.png'; // Replace with your image
+import OurMission from '../Components/OurMission'
 
 const AboutUs = () => {
   const stats = [
@@ -177,7 +178,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-
+      <OurMission />
       {/* Our Values */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">

@@ -2,23 +2,35 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
+// Define social media links (replace with your actual URLs)
+const socialLinks = [
+  { Icon: FaTwitter, url: "https://x.com/solvitforyou?s=21" },
+  { Icon: FaFacebook, url: "https://www.facebook.com/share/12HYipkeXG9/?mibextid=wwXIfr" },
+  { Icon: FaInstagram, url: "https://www.instagram.com/solvitcounselling?igsh=MWhuaWNsdHl3Nm4wZA==" },
+  { Icon: FaLinkedin, url: "https://www.linkedin.com/company/solvitcounselling/" },
+];
+
 const Footer = () => {
+  // Animation variants for the container
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
+  // Animation variants for sections
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
+  // Animation variants for list items
   const listItemVariants = {
     hidden: { opacity: 0, x: -10 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
     hover: { x: 5, transition: { duration: 0.3 } },
   };
 
+  // Animation variants for social icons
   const socialVariants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
@@ -66,8 +78,9 @@ const Footer = () => {
             >
               Your trusted partner in personal growth—connecting you with expert counselors across India.
             </motion.p>
+            {/* Social Media Links */}
             <motion.ul className="flex items-center space-x-5" variants={containerVariants}>
-              {[FaTwitter, FaFacebook, FaInstagram, FaLinkedin].map((Icon, index) => (
+              {socialLinks.map(({ Icon, url }, index) => (
                 <motion.li
                   key={index}
                   variants={socialVariants}
@@ -75,8 +88,10 @@ const Footer = () => {
                   whileTap="tap"
                 >
                   <a
-                    href="#"
+                    href={url}
                     className="flex items-center justify-center w-12 h-12 bg-teal-800 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Icon className="w-6 h-6 text-white" />
                   </a>
@@ -123,7 +138,7 @@ const Footer = () => {
                   <a
                     href="#"
                     className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
-                    >
+                  >
                     {item}
                   </a>
                 </motion.li>
