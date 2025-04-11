@@ -54,7 +54,6 @@ const NotFoundPage = () => {
       animate="animate"
       style={{ backgroundSize: "200% 200%" }}
       initial="hidden"
-      animate="visible"
     >
       <motion.div
         className="max-w-lg w-full bg-white rounded-2xl shadow-xl p-8 text-center"
