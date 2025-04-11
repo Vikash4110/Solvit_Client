@@ -28,6 +28,8 @@ const clientSchema = new mongoose.Schema(
     termsAccepted: { type: Boolean, required: true },
     profilePicture: { type: mongoose.Schema.Types.ObjectId, ref: "uploads.files" },
     role: { type: String, default: "client" },
+    connectedCounselors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Counselor" }],
+  sentRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "ConnectionRequest" }],
   },
   { timestamps: true }
 );

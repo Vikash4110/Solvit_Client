@@ -1,4 +1,6 @@
 const Counselor = require("../models/counselor-model");
+const Client = require("../models/client-model");
+const ConnectionRequest = require("../models/connection-request-model");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const GridFSBucket = require("gridfs-stream");
@@ -257,6 +259,64 @@ const getFile = async (req, res, next) => {
   }
 };
 
+// Get Pending Requests
+const getPendingRequests = async (req, res, next) => {
+  try {
+    const counselorId = req.user.userId;
+    const requests = await ConnectionRequest.find({ counselorId, status: "Pending" })
+      .populate("clientId", "fullName email profilePicture")
+      .lean();
+
+    res.json(requests);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Respond to Request
+const respondRequest = async (req, res, next) => {
+  try {
+    const { requestId, status } = req.body; // status: "Accepted" or "Rejected"
+    const counselorId = req.user.userId;
+
+    const request = await ConnectionRequest.findOne({ _id: requestId, counselorId });
+    if (!request || request.status !== "Pending") {
+      return res.status(400).json({ message: "Invalid or non-pending request" });
+    }
+
+    request.status = status;
+    await request.save();
+
+    if (status === "Accepted") {
+      await Counselor.findByIdAndUpdate(counselorId, { $push: { connectedClients: request.clientId } });
+      await Client.findByIdAndUpdate(request.clientId, {
+        $push: { connectedCounselors: counselorId },
+        $pull: { sentRequests: requestId },
+      });
+    } else if (status === "Rejected") {
+      await Client.findByIdAndUpdate(request.clientId, { $pull: { sentRequests: requestId } });
+    }
+
+    res.json({ message: `Request ${status.toLowerCase()} successfully` });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get Connected Clients
+const getConnectedClients = async (req, res, next) => {
+  try {
+    const counselorId = req.user.userId;
+    const counselor = await Counselor.findById(counselorId)
+      .populate("connectedClients", "fullName email profilePicture")
+      .lean();
+
+    res.json(counselor.connectedClients || []);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   registerCounselor,
   verifyOTP,
@@ -266,4 +326,7 @@ module.exports = {
   submitApplication,
   getProfile,
   getFile,
+  getPendingRequests,
+  respondRequest,
+  getConnectedClients,
 };

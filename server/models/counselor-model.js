@@ -84,6 +84,7 @@ const counselorSchema = new mongoose.Schema(
       enum: ["Pending", "Approved", "Rejected"],
       default: null, // No default status until application is submitted
     },
+    connectedClients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Client" }],
   },
   { timestamps: true }
 );

@@ -1,5 +1,6 @@
 const Client = require("../models/client-model");
 const Counselor = require("../models/counselor-model");
+const ConnectionRequest = require("../models/connection-request-model");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { Readable } = require("stream");
@@ -297,6 +298,77 @@ const getCounselorFile = async (req, res, next) => {
     next(error);
   }
 };
+// Send Connection Request
+const sendRequest = async (req, res, next) => {
+  try {
+    const { counselorId } = req.body;
+    const clientId = req.user.userId;
+
+    const existingRequest = await ConnectionRequest.findOne({ clientId, counselorId, status: "Pending" });
+    if (existingRequest) {
+      return res.status(400).json({ message: "Request already sent" });
+    }
+
+    const request = new ConnectionRequest({ clientId, counselorId });
+    await request.save();
+
+    await Client.findByIdAndUpdate(clientId, { $push: { sentRequests: request._id } });
+
+    res.status(201).json({ message: "Request sent successfully", requestId: request._id });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get Sent Requests
+const getSentRequests = async (req, res, next) => {
+  try {
+    const clientId = req.user.userId;
+    const requests = await ConnectionRequest.find({ clientId })
+      .populate("counselorId", "fullName specialization profilePicture")
+      .lean();
+
+    res.json(requests);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Withdraw Request
+const withdrawRequest = async (req, res, next) => {
+  try {
+    const { requestId } = req.params;
+    const clientId = req.user.userId;
+
+    const request = await ConnectionRequest.findOne({ _id: requestId, clientId });
+    if (!request || request.status !== "Pending") {
+      return res.status(400).json({ message: "Invalid or non-pending request" });
+    }
+
+    request.status = "Withdrawn";
+    await request.save();
+
+    await Client.findByIdAndUpdate(clientId, { $pull: { sentRequests: requestId } });
+
+    res.json({ message: "Request withdrawn successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get Connected Counselors
+const getConnectedCounselors = async (req, res, next) => {
+  try {
+    const clientId = req.user.userId;
+    const client = await Client.findById(clientId)
+      .populate("connectedCounselors", "fullName specialization profilePicture")
+      .lean();
+
+    res.json(client.connectedCounselors || []);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   registerClient,
@@ -307,5 +379,9 @@ module.exports = {
   getProfile,
   getFile,
   findCounselors,
-  getCounselorFile
+  getCounselorFile,
+  sendRequest,
+  getSentRequests,
+  withdrawRequest,
+  getConnectedCounselors,
 };
