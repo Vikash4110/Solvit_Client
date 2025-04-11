@@ -1,14 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import logo from '../assets/Red Simple & Circular YouTube Logo.jpeg'
+import logo from "../assets/Red Simple.jpeg";
 
-// Define social media links (replace with your actual URLs)
+// Define social media links (your provided URLs)
 const socialLinks = [
   { Icon: FaTwitter, url: "https://x.com/solvitforyou?s=21" },
   { Icon: FaFacebook, url: "https://www.facebook.com/share/12HYipkeXG9/?mibextid=wwXIfr" },
   { Icon: FaInstagram, url: "https://www.instagram.com/solvitcounselling?igsh=MWhuaWNsdHl3Nm4wZA==" },
   { Icon: FaLinkedin, url: "https://www.linkedin.com/company/solvitcounselling/" },
+];
+
+// Define support links (replace with your actual routes/URLs)
+const supportLinks = [
+  { name: "Help Center", url: "/help-center" },
+  { name: "Contact Us", url: "/contact" },
+  { name: "Terms of Service", url: "/term-condition" },
+  { name: "Privacy Policy", url: "/privacy-policy" },
+];
+
+// Define quick links (replace with your actual routes/URLs)
+const quickLinks = [
+  { name: "About Us", url: "/about" },
+  { name: "Counselors", url: "/counselors" },
+  { name: "Pricing", url: "/pricing" },
+  { name: "Blog", url: "/blog" },
 ];
 
 const Footer = () => {
@@ -53,14 +69,33 @@ const Footer = () => {
           <motion.div className="space-y-6" variants={sectionVariants}>
             <motion.div className="flex items-center space-x-3" variants={sectionVariants}>
               <div className="flex items-center space-x-2">
-            
+                <motion.div
+                  className="bg-white w-6 h-6 rounded-full shadow-lg"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+                <motion.div
+                  className="bg-teal-300 w-4 h-4 rounded-full shadow-lg"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                />
               </div>
-              <motion.span
-                className="text-3xl font-extrabold tracking-tight text-white"
-                variants={sectionVariants}
-              >
-            <img src={logo} className="h-24 w-24 text-white" alt="" />     
-              </motion.span>
+              <div className="flex items-center space-x-3">
+                <motion.img
+                  src={logo}
+                  className="h-14 w-14 rounded-full object-cover"
+                  alt="Solvit Logo"
+                  variants={sectionVariants}
+                />
+                <motion.span
+                  className="text-3xl font-extrabold tracking-tight text-white"
+                  variants={sectionVariants}
+                >
+                  Solvit
+                </motion.span>
+              </div>
             </motion.div>
             <motion.p
               className="text-base leading-relaxed text-teal-100"
@@ -99,18 +134,16 @@ const Footer = () => {
               Support
             </motion.p>
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
-              {["Help Center", "Contact Us", "Terms of Service", "Privacy Policy"].map(
-                (item, index) => (
-                  <motion.li key={index} variants={listItemVariants} whileHover="hover">
-                    <a
-                      href="#"
-                      className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
-                    >
-                      {item}
-                    </a>
-                  </motion.li>
-                )
-              )}
+              {supportLinks.map(({ name, url }, index) => (
+                <motion.li key={index} variants={listItemVariants} whileHover="hover">
+                  <a
+                    href={url}
+                    className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                  >
+                    {name}
+                  </a>
+                </motion.li>
+              ))}
             </motion.ul>
           </motion.div>
 
@@ -123,13 +156,13 @@ const Footer = () => {
               Quick Links
             </motion.p>
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
-              {["About Us", "Counselors", "Pricing", "Blog"].map((item, index) => (
+              {quickLinks.map(({ name, url }, index) => (
                 <motion.li key={index} variants={listItemVariants} whileHover="hover">
                   <a
-                    href="#"
+                    href={url}
                     className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                   >
-                    {item}
+                    {name}
                   </a>
                 </motion.li>
               ))}

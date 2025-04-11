@@ -19,7 +19,8 @@ import FindCounselors from "./Components/FindCounselor";
 import CounselorProfile from "./Components/CounselorShowProfile";
 import AboutUs from './Components/AboutUs'
 import NotFoundPage from "./Pages/NotFoundPage";
-
+import TermCondition from "./Components/TermCondition";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Start false, update based on session
@@ -65,6 +66,9 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} /> 
           {/* 404 ErrorPage */}
           <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route for 404 */}
+          {/* Quick-Pages  */}
+          <Route path="/term-condition" element={<TermCondition />} /> 
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
         </Routes>
       </div>
     </AuthProvider>
