@@ -148,7 +148,6 @@ const WithdrawRequests = () => {
         ) : (
           <div className="bg-white rounded-xl shadow-sm p-12 text-center">
             <div className="max-w-md mx-auto">
-              <img src="/no-results.svg" alt="No requests" className="w-48 mx-auto mb-6" />
               <h3 className="text-xl font-semibold text-gray-800 mb-2">No Pending Requests</h3>
               <p className="text-gray-600 mb-6">
                 You haven’t sent any pending requests yet. Explore counselors to connect!

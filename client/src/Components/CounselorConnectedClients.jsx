@@ -14,6 +14,7 @@ const CounselorConnectedClients = () => {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/counselors/connected-clients`, {
         headers: { Authorization: authorizationToken },
       });
+      if (!response.ok) throw new Error("Failed to fetch connected clients");
       const data = await response.json();
       setClients(data);
     } catch (error) {
@@ -45,7 +46,7 @@ const CounselorConnectedClients = () => {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src={client.profilePictureUrl || "/default-profile.png"}
+                  src={client.profilePicture ? `${import.meta.env.VITE_BACKEND_URL}/api/counselors/file/${client.profilePicture}` : "/default-profile.png"}
                   alt={client.fullName}
                   className="w-12 h-12 rounded-full"
                 />

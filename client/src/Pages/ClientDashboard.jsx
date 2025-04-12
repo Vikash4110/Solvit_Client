@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuth } from "../Store/auth";
 import FindCounselors from "../Components/FindCounselor";
+import ClientConnectedCounselors from "../Components/ClientConnectedCounselors";
 
 const ClientDashboard = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -133,27 +134,19 @@ const ClientDashboard = () => {
 
   const tabConfig = [
     { id: "home", label: "Dashboard", icon: <FaHome className="w-4 h-4" /> },
-    { id: "sessions", label: "Sessions", icon: <FaCalendarCheck className="w-4 h-4" /> },
-    { id: "messages", label: "Messages", icon: <FaComments className="w-4 h-4" /> },
-    { id: "history", label: "History", icon: <FaFileAlt className="w-4 h-4" /> },
-    { id: "payments", label: "Payments", icon: <FaMoneyBillWave className="w-4 h-4" /> },
     { id: "find-counselors", label: "Find Counselors", icon: <FaUsers className="w-4 h-4" /> },
+    { id: "connectecd", label: "Connected Counselors", icon: <FaUsers className="w-4 h-4" /> },
+
   ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "home":
         return <DashboardHome user={user} setActiveTab={setActiveTab} />;
-      case "sessions":
-        return <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center"><h3 className="text-xl font-medium text-gray-600">Manage Your Sessions</h3><p className="text-gray-500 mt-2">View and schedule upcoming counseling sessions.</p></div>;
-      case "messages":
-        return <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center"><h3 className="text-xl font-medium text-gray-600">Messages</h3><p className="text-gray-500 mt-2">Communicate with your counselor here.</p></div>;
-      case "history":
-        return <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center"><h3 className="text-xl font-medium text-gray-600">Session History</h3><p className="text-gray-500 mt-2">Review past sessions and notes.</p></div>;
-      case "payments":
-        return <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center"><h3 className="text-xl font-medium text-gray-600">Payment Management</h3><p className="text-gray-500 mt-2">Track and manage your payments.</p></div>;
       case "find-counselors":
-        return <FindCounselors />; // Render the imported FindCounselors component
+        return <FindCounselors />; // Render the imported FindCounselors 
+      case "connectecd":
+          return <ClientConnectedCounselors />;
       default:
         return <DashboardHome user={user} setActiveTab={setActiveTab} />;
     }

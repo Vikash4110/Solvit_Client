@@ -245,6 +245,7 @@ const getFile = async (req, res, next) => {
 const findCounselors = async (req, res, next) => {
   try {
     const { search = "", specialization = "", language = "", sessionMode = "", _id } = req.query;
+    const clientId = req.user.userId;
 
     const query = { status: "Approved" };
     if (_id) {
@@ -261,6 +262,13 @@ const findCounselors = async (req, res, next) => {
       if (sessionMode) query.preferredSessionMode = { $in: [sessionMode] };
     }
 
+    // Fetch the client to get connected counselors
+    const client = await Client.findById(clientId).select("connectedCounselors");
+    const connectedCounselorIds = client.connectedCounselors || [];
+
+    // Exclude connected counselors
+    query._id = { $nin: connectedCounselorIds };
+
     const counselors = await Counselor.find(query)
       .select(
         "fullName specialization languages preferredSessionMode yearsOfExperience profilePicture email gender dob highestQualification isLicensed licenseDetails pricing paymentMethod bio availability"
@@ -273,6 +281,7 @@ const findCounselors = async (req, res, next) => {
     next(error);
   }
 };
+
 // New function to fetch counselor profile pictures for clients
 const getCounselorFile = async (req, res, next) => {
   try {
@@ -298,15 +307,15 @@ const getCounselorFile = async (req, res, next) => {
     next(error);
   }
 };
-// Send Connection Request
 const sendRequest = async (req, res, next) => {
   try {
     const { counselorId } = req.body;
     const clientId = req.user.userId;
 
-    const existingRequest = await ConnectionRequest.findOne({ clientId, counselorId, status: "Pending" });
+    // Check for any existing request (Pending, Accepted, Rejected, or Withdrawn)
+    const existingRequest = await ConnectionRequest.findOne({ clientId, counselorId });
     if (existingRequest) {
-      return res.status(400).json({ message: "Request already sent" });
+      return res.status(400).json({ message: "A request to this counselor already exists" });
     }
 
     const request = new ConnectionRequest({ clientId, counselorId });

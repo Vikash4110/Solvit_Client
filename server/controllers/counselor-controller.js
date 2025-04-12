@@ -273,7 +273,6 @@ const getPendingRequests = async (req, res, next) => {
   }
 };
 
-// Respond to Request
 const respondRequest = async (req, res, next) => {
   try {
     const { requestId, status } = req.body; // status: "Accepted" or "Rejected"
@@ -288,13 +287,32 @@ const respondRequest = async (req, res, next) => {
     await request.save();
 
     if (status === "Accepted") {
-      await Counselor.findByIdAndUpdate(counselorId, { $push: { connectedClients: request.clientId } });
+      // Check if client is already connected
+      const counselor = await Counselor.findById(counselorId);
+      if (counselor.connectedClients.includes(request.clientId)) {
+        return res.status(400).json({ message: "Client is already connected" });
+      }
+
+      // Check if counselor is already connected to client
+      const client = await Client.findById(request.clientId);
+      if (client.connectedCounselors.includes(counselorId)) {
+        return res.status(400).json({ message: "Counselor is already connected" });
+      }
+
+      // Add client to counselor's connectedClients
+      await Counselor.findByIdAndUpdate(counselorId, {
+        $push: { connectedClients: request.clientId },
+      });
+
+      // Add counselor to client's connectedCounselors and remove request
       await Client.findByIdAndUpdate(request.clientId, {
         $push: { connectedCounselors: counselorId },
         $pull: { sentRequests: requestId },
       });
     } else if (status === "Rejected") {
-      await Client.findByIdAndUpdate(request.clientId, { $pull: { sentRequests: requestId } });
+      await Client.findByIdAndUpdate(request.clientId, {
+        $pull: { sentRequests: requestId },
+      });
     }
 
     res.json({ message: `Request ${status.toLowerCase()} successfully` });
