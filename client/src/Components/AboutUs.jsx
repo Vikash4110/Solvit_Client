@@ -131,7 +131,7 @@ const AboutUs = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div 
@@ -177,7 +177,7 @@ const AboutUs = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
       <OurMission />
       {/* Our Values */}
       <section className="py-20 bg-gray-50">

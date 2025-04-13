@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaBrain,
   FaBriefcase,
@@ -7,6 +7,8 @@ import {
   FaRocket,
   FaUsers,
   FaGraduationCap,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 
 const services = [
@@ -89,22 +91,86 @@ const services = [
 ];
 
 const OurServices = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const autoSlideInterval = 5000;
+  const timeoutRef = useRef(null);
+
+  // Handle responsiveness
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(Math.min(3, services.length));
+      }
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    return () => window.removeEventListener("resize", updateSlidesToShow);
+  }, []);
+
+  // Auto-slide functionality
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    resetTimeout();
+    if (!isPaused && services.length > slidesToShow) {
+      timeoutRef.current = setTimeout(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex >= services.length - slidesToShow ? 0 : prevIndex + 1
+        );
+      }, autoSlideInterval);
+    }
+    return () => resetTimeout();
+  }, [currentIndex, isPaused, slidesToShow]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex <= 0 ? services.length - slidesToShow : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex >= services.length - slidesToShow ? 0 : prevIndex + 1
+    );
+  };
+
+  // Calculate visible services
+  const visibleServices = [];
+  if (services.length > 0) {
+    for (let i = 0; i < slidesToShow && i < services.length; i++) {
+      const index = (currentIndex + i) % services.length;
+      visibleServices.push(services[index]);
+    }
+  }
+
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
     hover: {
       scale: 1.03,
-      boxShadow: "0 15px 30px rgba(0, 0, 0, 0.15)",
+      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
       transition: { duration: 0.3 },
     },
   };
@@ -121,84 +187,137 @@ const OurServices = () => {
     tap: { scale: 0.95 },
   };
 
+  if (!services.length) {
+    return <div className="text-center py-20">No services available</div>;
+  }
+
   return (
     <motion.section
-      className="py-20 bg-gray-50"
+      className="py-16 bg-gray-50"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div className="text-center mb-16" variants={containerVariants}>
+        <motion.div className="text-center mb-12" variants={containerVariants}>
           <motion.h2
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600"
+            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600"
             variants={headerVariants}
           >
             Our Services
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed"
             variants={headerVariants}
           >
             Explore a wide range of expert counseling and coaching services, crafted to empower your personal and professional growth.
           </motion.p>
         </motion.div>
 
-        {/* Services Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
-          variants={containerVariants}
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className={`p-8 rounded-2xl ${service.bgColor} border ${service.borderColor} shadow-lg transition-all duration-300`}
-              variants={cardVariants}
-              whileHover="hover"
-            >
+        {/* Services Carousel */}
+        <div className="relative overflow-hidden">
+          <div className="relative h-[350px] sm:h-[370px] lg:h-[390px]">
+            <AnimatePresence initial={false}>
               <motion.div
-                className="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow-md mb-6 mx-auto"
-                variants={headerVariants}
+                key={currentIndex}
+                className="absolute inset-0 flex gap-4 px-2"
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ duration: 0.4 }}
               >
-                <span className={`text-3xl ${service.color}`}>
-                  {service.icon}
-                </span>
-              </motion.div>
-              <motion.h3
-                className="text-2xl font-semibold text-gray-900 text-center mb-4"
-                variants={headerVariants}
-              >
-                {service.title}
-              </motion.h3>
-              <motion.ul
-                className="text-gray-600 space-y-3"
-                variants={containerVariants}
-              >
-                {service.description.map((item, idx) => (
-                  <motion.li
-                    key={idx}
-                    className="text-base flex items-start"
-                    variants={listItemVariants}
+                {visibleServices.map((service, index) => (
+                  <motion.div
+                    key={`${currentIndex}-${index}`}
+                    className={`flex-1 min-w-0 p-6 rounded-2xl ${service.bgColor} border ${service.borderColor} shadow-md flex flex-col`}
+                    variants={cardVariants}
+                    whileHover="hover"
                   >
-                    <span className={`mr-2 ${service.color} text-lg`}>•</span>
-                    {item}
-                  </motion.li>
+                    <motion.div
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-sm mb-4 mx-auto"
+                      variants={headerVariants}
+                    >
+                      <span className={`text-2xl ${service.color}`}>
+                        {service.icon}
+                      </span>
+                    </motion.div>
+                    <motion.h3
+                      className="text-xl font-semibold text-gray-900 text-center mb-3"
+                      variants={headerVariants}
+                    >
+                      {service.title}
+                    </motion.h3>
+                    <motion.ul
+                      className="flex-1 text-gray-600 space-y-2 text-base"
+                      variants={containerVariants}
+                    >
+                      {service.description.map((item, idx) => (
+                        <motion.li
+                          key={idx}
+                          className="flex items-start"
+                          variants={listItemVariants}
+                        >
+                          <span className={`mr-2 ${service.color} text-lg`}>•</span>
+                          {item}
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
                 ))}
-              </motion.ul>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Buttons - Shown when there are multiple services */}
+          {services.length > slidesToShow && (
+            <>
+              <motion.button
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white transition-all z-10"
+                onClick={handlePrev}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Previous slide"
+              >
+                <FaChevronLeft className="text-teal-500 text-lg" />
+              </motion.button>
+              <motion.button
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white transition-all z-10"
+                onClick={handleNext}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Next slide"
+              >
+                <FaChevronRight className="text-teal-500 text-lg" />
+              </motion.button>
+            </>
+          )}
+
+          {/* Mobile navigation dots */}
+          {slidesToShow === 1 && services.length > 1 && (
+            <div className="flex justify-center mt-4 space-x-2">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    currentIndex === index ? "bg-teal-500" : "bg-gray-300"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Call to Action */}
-        <motion.div
-          className="text-center mt-16"
-          variants={containerVariants}
-        >
+        <motion.div className="text-center mt-12" variants={containerVariants}>
           <motion.a
             href="/client-register"
-            className="inline-block px-10 py-4 bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-teal-600 hover:to-indigo-700 transition-all duration-300"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-teal-600 hover:to-indigo-700 transition-all duration-300"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"

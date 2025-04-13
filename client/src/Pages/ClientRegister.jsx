@@ -183,7 +183,7 @@ const ClientRegister = () => {
             <div>
               <h1 className="text-2xl font-bold flex items-center gap-3">
                 <FontAwesomeIcon icon={faUserCircle} className="text-2xl" />
-                Client Registration
+               Get Started Now
               </h1>
               <p className="text-teal-100 mt-1">Join our platform to find the best services</p>
             </div>
