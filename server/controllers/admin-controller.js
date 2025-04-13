@@ -1,9 +1,8 @@
-// controllers/admin-controller.js
 const Counselor = require("../models/counselor-model");
 const Admin = require("../models/admin-model");
 const { sendEmail } = require("../utils/email");
-const mongoose = require("mongoose"); // Add this import
-const GridFSBucket = require("gridfs-stream"); // Add this import
+const mongoose = require("mongoose"); 
+const GridFSBucket = require("gridfs-stream"); 
 
 const loginAdmin = async (req, res, next) => {
   try {

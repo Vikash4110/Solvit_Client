@@ -365,20 +365,6 @@ const withdrawRequest = async (req, res, next) => {
   }
 };
 
-// Get Connected Counselors
-// const getConnectedCounselors = async (req, res, next) => {
-//   try {
-//     const clientId = req.user.userId;
-//     const client = await Client.findById(clientId)
-//       .populate("connectedCounselors", "fullName specialization profilePicture")
-//       .lean();
-
-//     res.json(client.connectedCounselors || []);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-// client-controller.js
 const getConnectedCounselors = async (req, res, next) => {
   try {
     const clientId = req.user.userId;

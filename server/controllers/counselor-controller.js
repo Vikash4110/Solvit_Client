@@ -321,20 +321,6 @@ const respondRequest = async (req, res, next) => {
   }
 };
 
-// Get Connected Clients
-// const getConnectedClients = async (req, res, next) => {
-//   try {
-//     const counselorId = req.user.userId;
-//     const counselor = await Counselor.findById(counselorId)
-//       .populate("connectedClients", "fullName email profilePicture")
-//       .lean();
-
-//     res.json(counselor.connectedClients || []);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-// counselor-controller.js
 const getConnectedClients = async (req, res, next) => {
   try {
     const counselorId = req.user.userId;
