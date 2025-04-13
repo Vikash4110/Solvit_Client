@@ -205,7 +205,7 @@ const OurServices = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-12" variants={containerVariants}>
           <motion.h2
-            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600"
+            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600"
             variants={headerVariants}
           >
             Our Services

@@ -1,17 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import logo from "../assets/Red Simple.jpeg";
 
-// Define social media links (your provided URLs)
+// Define social media links
 const socialLinks = [
   { Icon: FaTwitter, url: "https://x.com/solvitforyou?s=21" },
-  { Icon: FaFacebook, url: "https://www.facebook.com/share/12HYipkeXG9/?mibextid=wwXIfr" },
-  { Icon: FaInstagram, url: "https://www.instagram.com/solvitcounselling?igsh=MWhuaWNsdHl3Nm4wZA==" },
-  { Icon: FaLinkedin, url: "https://www.linkedin.com/company/solvitcounselling/" },
+  {
+    Icon: FaFacebook,
+    url: "https://www.facebook.com/share/12HYipkeXG9/?mibextid=wwXIfr",
+  },
+  {
+    Icon: FaInstagram,
+    url: "https://www.instagram.com/solvitcounselling?igsh=MWhuaWNsdHl3Nm4wZA==",
+  },
+  {
+    Icon: FaLinkedin,
+    url: "https://www.linkedin.com/company/solvitcounselling/",
+  },
 ];
 
-// Define support links (replace with your actual routes/URLs)
+// Define support links
 const supportLinks = [
   { name: "Help Center", url: "/help-center" },
   { name: "Contact Us", url: "/contact" },
@@ -19,7 +29,7 @@ const supportLinks = [
   { name: "Privacy Policy", url: "/privacy-policy" },
 ];
 
-// Define quick links (replace with your actual routes/URLs)
+// Define quick links
 const quickLinks = [
   { name: "About Us", url: "/about" },
   { name: "Counselors", url: "/counselors" },
@@ -56,7 +66,7 @@ const Footer = () => {
   };
 
   return (
-    <motion.section
+    <motion.footer
       className="py-16 bg-gradient-to-b from-teal-700 to-teal-900 text-white"
       initial="hidden"
       whileInView="visible"
@@ -117,6 +127,7 @@ const Footer = () => {
                     className="flex items-center justify-center w-12 h-12 bg-teal-800 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Visit our ${Icon.name} page`}
                   >
                     <Icon className="w-6 h-6 text-white" />
                   </a>
@@ -136,12 +147,12 @@ const Footer = () => {
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
               {supportLinks.map(({ name, url }, index) => (
                 <motion.li key={index} variants={listItemVariants} whileHover="hover">
-                  <a
-                    href={url}
+                  <Link
+                    to={url}
                     className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                   >
                     {name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
@@ -158,12 +169,12 @@ const Footer = () => {
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
               {quickLinks.map(({ name, url }, index) => (
                 <motion.li key={index} variants={listItemVariants} whileHover="hover">
-                  <a
-                    href={url}
+                  <Link
+                    to={url}
                     className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                   >
                     {name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
@@ -179,10 +190,20 @@ const Footer = () => {
             </motion.p>
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
               <motion.li variants={listItemVariants}>
-                <p className="text-base text-teal-100">Email: support@solvit.in</p>
+                <a
+                  href="mailto:support@solvit.in"
+                  className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                >
+                  Email: support@solvit.in
+                </a>
               </motion.li>
               <motion.li variants={listItemVariants}>
-                <p className="text-base text-teal-100">Phone: +91 123-456-7890</p>
+                <a
+                  href="tel:+911234567890"
+                  className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                >
+                  Phone: +91 123-456-7890
+                </a>
               </motion.li>
               <motion.li variants={listItemVariants}>
                 <p className="text-base text-teal-100">India HQ: Bengaluru, Karnataka</p>
@@ -205,7 +226,7 @@ const Footer = () => {
           © {new Date().getFullYear()} Solvit. All Rights Reserved.
         </motion.p>
       </div>
-    </motion.section>
+    </motion.footer>
   );
 };
 
