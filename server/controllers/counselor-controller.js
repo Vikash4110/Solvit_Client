@@ -259,12 +259,11 @@ const getFile = async (req, res, next) => {
   }
 };
 
-// Get Pending Requests
 const getPendingRequests = async (req, res, next) => {
   try {
     const counselorId = req.user.userId;
     const requests = await ConnectionRequest.find({ counselorId, status: "Pending" })
-      .populate("clientId", "fullName email profilePicture")
+      .populate("clientId", "fullName email profilePicture address username gender dob contactNumber preferredLanguage otherLanguage howHeardAboutUs referralCode")
       .lean();
 
     res.json(requests);
@@ -272,6 +271,7 @@ const getPendingRequests = async (req, res, next) => {
     next(error);
   }
 };
+
 
 const respondRequest = async (req, res, next) => {
   try {
@@ -322,15 +322,40 @@ const respondRequest = async (req, res, next) => {
 };
 
 // Get Connected Clients
+// const getConnectedClients = async (req, res, next) => {
+//   try {
+//     const counselorId = req.user.userId;
+//     const counselor = await Counselor.findById(counselorId)
+//       .populate("connectedClients", "fullName email profilePicture")
+//       .lean();
+
+//     res.json(counselor.connectedClients || []);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+// counselor-controller.js
 const getConnectedClients = async (req, res, next) => {
   try {
     const counselorId = req.user.userId;
     const counselor = await Counselor.findById(counselorId)
-      .populate("connectedClients", "fullName email profilePicture")
+      .populate({
+        path: "connectedClients",
+        select: "fullName email dob gender contactNumber address username preferredLanguage otherLanguage howHeardAboutUs referralCode termsAccepted profilePicture",
+      })
       .lean();
 
-    res.json(counselor.connectedClients || []);
+    // Map connected clients to include profile picture URL
+    const enrichedClients = (counselor.connectedClients || []).map((client) => ({
+      ...client,
+      profilePictureUrl: client.profilePicture
+        ? `${process.env.BACKEND_URL}/api/clients/file/${client.profilePicture}`
+        : "/default-profile.png",
+    }));
+
+    res.json(enrichedClients);
   } catch (error) {
+    console.error("Get connected clients error:", error);
     next(error);
   }
 };

@@ -366,15 +366,41 @@ const withdrawRequest = async (req, res, next) => {
 };
 
 // Get Connected Counselors
+// const getConnectedCounselors = async (req, res, next) => {
+//   try {
+//     const clientId = req.user.userId;
+//     const client = await Client.findById(clientId)
+//       .populate("connectedCounselors", "fullName specialization profilePicture")
+//       .lean();
+
+//     res.json(client.connectedCounselors || []);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+// client-controller.js
 const getConnectedCounselors = async (req, res, next) => {
   try {
     const clientId = req.user.userId;
     const client = await Client.findById(clientId)
-      .populate("connectedCounselors", "fullName specialization profilePicture")
+      .populate({
+        path: "connectedCounselors",
+        select:
+          "fullName email phoneNumber gender highestQualification specialization dob address yearsOfExperience isLicensed licenseDetails availability preferredSessionMode pricing paymentMethod bankDetails bio languages profilePicture status",
+      })
       .lean();
 
-    res.json(client.connectedCounselors || []);
+    // Map connected counselors to include profile picture URL
+    const enrichedCounselors = (client.connectedCounselors || []).map((counselor) => ({
+      ...counselor,
+      profilePictureUrl: counselor.profilePicture
+        ? `${process.env.BACKEND_URL}/api/counselors/file/${counselor.profilePicture}`
+        : "/default-profile.png",
+    }));
+
+    res.json(enrichedCounselors);
   } catch (error) {
+    console.error("Get connected counselors error:", error);
     next(error);
   }
 };

@@ -105,7 +105,7 @@ const Navbar = () => {
           <motion.div className="flex items-center space-x-3">
             <Link to="/" className="flex items-center space-x-1">  
                 {/* <FaComments className="h-6 w-6 text-white" /> */}
-                <img src={logo} className="h-16 w-16 text-white" alt="" />     
+                <img src={logo} className="h- w-16 text-white" alt="" />     
               <motion.span className="text-2xl font-bold text-gray-800">
                 <span className="text-teal-600">Solvit</span>
               </motion.span>

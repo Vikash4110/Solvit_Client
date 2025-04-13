@@ -24,7 +24,7 @@ router.post("/login", validate(loginSchema), loginClient);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 router.get("/profile", authMiddleware, getProfile);
-router.get("/file/:fileId", authMiddleware, getFile);
+router.get("/file/:fileId",  getFile);
 router.get("/find-counselors", authMiddleware, findCounselors);
 router.get("/counselor-file/:fileId", authMiddleware, getCounselorFile); 
 router.post("/send-request", authMiddleware, sendRequest);

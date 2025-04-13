@@ -23,7 +23,7 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 router.post("/application", authMiddleware, submitApplication);
 router.get("/profile", authMiddleware, getProfile);
-router.get("/file/:fileId", authMiddleware, getFile);
+router.get("/file/:fileId",  getFile);
 router.get("/pending-requests", authMiddleware, getPendingRequests);
 router.post("/respond-request", authMiddleware, respondRequest);
 router.get("/connected-clients", authMiddleware, getConnectedClients);
