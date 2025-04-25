@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaUsers, FaDollarSign } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 const reasons = [
   {
@@ -65,7 +66,7 @@ const WhySolvit = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-16" variants={containerVariants}>
           <motion.h2 
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600" 
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-teal-500 to-indigo-600" 
             variants={headerVariants}
           >
             Why Choose Solvit?
@@ -125,7 +126,7 @@ const WhySolvit = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-4 px-10 rounded-full hover:from-teal-600 hover:to-indigo-700 transition-all shadow-lg"
           >
-            Start Your Journey Today
+           <Link to="client-register">Start Your Journey Today</Link> 
           </motion.button>
         </motion.div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Store/auth";
 import Register from "./Pages/CounselorRegister";
+import ScrollToTop from './Components/ScrollToTop'
 import Login from "./Pages/CounselorLogin";
 import Application from "./Pages/CouselorApplication";
 import Profile from "./Pages/CounselorProfile";
@@ -26,7 +27,7 @@ import ClientConnectedCounselors from "./Components/ClientConnectedCounselors";
 import CounselorPendingRequests from "./Components/CounselorPendingRequests";
 import CounselorConnectedClients from "./Components/CounselorConnectedClients";
 import WithdrawRequests from "./Components/WithdrawRequests";
-
+import OurCounselors from "./Components/OurCounselors";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Start false, update based on session
@@ -51,11 +52,14 @@ function App() {
       {isLoading && <Loader />}
       <div className={`${isLoading ? "hidden" : "block"}`}>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           {/* CounselorRoutes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/counselor-register" element={<Register />} />
+          <Route path="/our-counselors" element={<OurCounselors />} />
+
           <Route path="/counselor-login" element={<Login />} />
           <Route path="/counselor-application" element={<Application />} />
           <Route path="/counselor-profile" element={<Profile />} />

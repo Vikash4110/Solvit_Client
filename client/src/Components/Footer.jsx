@@ -191,22 +191,23 @@ const Footer = () => {
             <motion.ul className="mt-6 space-y-5" variants={containerVariants}>
               <motion.li variants={listItemVariants}>
                 <a
-                  href="mailto:support@solvit.in"
+                  href="mailto:solvitcounselling@gmail.com"
                   className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                 >
-                  Email: support@solvit.in
+                  Email: solvitcounselling@gmail.com
                 </a>
               </motion.li>
               <motion.li variants={listItemVariants}>
                 <a
-                  href="tel:+911234567890"
+                  href="tel:+918055386973"
                   className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                 >
-                  Phone: +91 123-456-7890
+                  Phone: +91 8055386973
                 </a>
               </motion.li>
               <motion.li variants={listItemVariants}>
-                <p className="text-base text-teal-100">India HQ: Bengaluru, Karnataka</p>
+                <p className="text-base text-teal-100">Solvit Pvt. Ltd.  Atal Nagar, Naya Raipur– 493661, India 
+</p>
               </motion.li>
             </motion.ul>
           </motion.div>

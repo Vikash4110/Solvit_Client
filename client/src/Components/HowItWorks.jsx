@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaUserPlus, FaSearch, FaCalendarCheck, FaComments } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 const steps = [
   {
@@ -62,7 +63,7 @@ const HowItWorks = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-16" variants={containerVariants}>
           <motion.h2
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-purple-600"
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-teal-500 to-purple-600"
             variants={headerVariants}
           >
             How It Works
@@ -135,7 +136,7 @@ const HowItWorks = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-teal-500 to-purple-600 text-white font-semibold py-4 px-10 rounded-full hover:from-teal-600 hover:to-purple-700 transition-all shadow-lg"
           >
-            Get Started Now
+           <Link to="/client-register"> Get Started Now</Link>
           </motion.button>
         </motion.div>
       </div>

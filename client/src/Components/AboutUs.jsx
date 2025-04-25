@@ -12,7 +12,8 @@ import {
 import { GiBrain } from 'react-icons/gi';
 import teamPlaceholder from '../assets/vecteezy_two-women-sitting-in-chairs-talking_57226176.png'; // Replace with your image
 import aboutHero from '../assets/vecteezy_wonderful-traditional-group-of-students-studying-together-in_57440118.png'; // Replace with your image
-import OurMission from '../Components/OurMission'
+import OurMission from '../Components/OurMission';
+import { Link } from 'react-router-dom'
 
 const AboutUs = () => {
   const stats = [
@@ -94,7 +95,7 @@ const AboutUs = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
-              Find Your Expert
+            <Link to="/client-register"> Find Your Expert</Link> 
             </motion.button>
           </motion.div>
         </div>
@@ -129,55 +130,6 @@ const AboutUs = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Our Story */}
-      {/* <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="relative rounded-xl overflow-hidden">
-                <img 
-                  src={teamPlaceholder} 
-                  alt="Our team" 
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-100 rounded-full opacity-20 blur-xl"></div>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Our <span className="text-teal-600">Mission</span> at Solvit
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Solvit was founded to break down barriers to mental health and personal development support in India. We recognized the stigma, high costs, and lack of accessibility preventing people from getting the help they need.
-              </p>
-              <p className="text-lg text-gray-600 mb-8">
-                Today, we've created a safe space where individuals can connect with certified professionals across mental health, relationships, career, academics, and wellness - all from the comfort and privacy of their homes.
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-teal-700 transition-all shadow-md"
-              >
-                Meet Our Experts
-              </motion.button>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
       <OurMission />
       {/* Our Values */}
       <section className="py-20 bg-gray-50">
@@ -284,14 +236,14 @@ const AboutUs = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
-                Connect with an Expert
+                <Link to="/client-register">Connect with an Expert</Link>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all"
               >
-                Learn How It Works
+              <Link to="/client-register"> Learn How It Works</Link> 
               </motion.button>
             </div>
           </motion.div>

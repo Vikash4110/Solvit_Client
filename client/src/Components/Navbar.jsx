@@ -56,7 +56,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu and dropdown when route changes
   useEffect(() => {
     setIsOpen(false);
     setIsDropdownOpen(false);
@@ -82,7 +81,7 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", text: "Home", icon: <FaHome className="text-lg" /> },
     { to: "/about", text: "About", icon: <FaInfoCircle className="text-lg" /> },
-    { to: "/counselors", text: "Counselors", icon: <FaUserFriends className="text-lg" /> },
+    { to: "/our-counselors", text: "Counselors", icon: <FaUserFriends className="text-lg" /> },
     { to: "/contact", text: "Contact", icon: <FaComments className="text-lg" /> },
   ];
 
@@ -133,24 +132,11 @@ const Navbar = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            {/* Search Button */}
-            {/* <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 text-gray-600 hover:text-teal-600 transition-colors relative"
-              aria-label="Search"
-            >
-              <FaSearch className="w-5 h-5" />
-            </button> */}
+           
 
             {isLoggedIn ? (
               <>
-                {/* Notification Bell */}
-                {/* <button className="p-2 text-gray-600 hover:text-teal-600 transition-colors relative">
-                  <FaBell className="w-5 h-5" />
-                  <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button> */}
-
-                {/* User Dropdown */}
+               
                 <div className="relative hidden lg:block" ref={dropdownRef}>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}

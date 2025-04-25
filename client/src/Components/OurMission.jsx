@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHeart, FaLock, FaUsers, FaGlobeAsia } from 'react-icons/fa';
-import supportImg from '../assets/vecteezy_3-dimensions-business-meeting-around-circular-table_59036559.png'; // Replace with your image
+import supportImg from '../assets/vecteezy_3-dimensions-business-meeting-around-circular-table_59036559.png';
+import { Link } from 'react-router-dom'
 
 const OurMission = () => {
   const missionPoints = [
@@ -71,7 +72,7 @@ const OurMission = () => {
               whileTap={{ scale: 0.97 }}
               className="mt-8 bg-teal-400 text-blue-900 font-semibold py-3 px-8 rounded-lg hover:bg-teal-300 transition-all shadow-lg"
             >
-              Get Started Today
+              <Link to="/client-register">Get Started Today</Link> 
             </motion.button>
           </motion.div>
 
