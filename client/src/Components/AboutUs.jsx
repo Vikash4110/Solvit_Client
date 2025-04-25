@@ -10,8 +10,8 @@ import {
   FaWallet
 } from 'react-icons/fa';
 import { GiBrain } from 'react-icons/gi';
-import teamPlaceholder from '../assets/vecteezy_two-women-sitting-in-chairs-talking_57226176.png'; // Replace with your image
-import aboutHero from '../assets/vecteezy_wonderful-traditional-group-of-students-studying-together-in_57440118.png'; // Replace with your image
+import teamPlaceholder from '../assets/IMG_2644.png'; // Replace with your image
+import aboutHero from '../assets/IMG_2644.png'; // Replace with your image
 import OurMission from '../Components/OurMission';
 import { Link } from 'react-router-dom'
 

@@ -4,7 +4,7 @@ import { FaUserPlus, FaComments } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import heroImage from "../assets/vecteezy_wonderful-traditional-group-of-students-studying-together-in_57440118.png"; // Replace with your image path
+import heroImage from "../assets/IMG_2647.png"; // Replace with your image path
 
 const HeroSection = () => {
   useEffect(() => {

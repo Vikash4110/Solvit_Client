@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHeart, FaLock, FaUsers, FaGlobeAsia } from 'react-icons/fa';
-import supportImg from '../assets/vecteezy_3-dimensions-business-meeting-around-circular-table_59036559.png';
+import supportImg from '../assets/IMG_2648.png';
 import { Link } from 'react-router-dom'
 
 const OurMission = () => {
