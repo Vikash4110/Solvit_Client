@@ -44,7 +44,6 @@ const ClientLogin = () => {
       storeTokenInLS(data.token);
       toast.success("Login successful! Redirecting...");
 
-      // Navigate immediately; useEffect in auth.js will fetch the profile
       navigate("/client-dashboard");
     } catch (error) {
       console.error("Login error:", error);
@@ -135,7 +134,7 @@ const ClientLogin = () => {
       <motion.div className="w-full lg:w-1/2 flex justify-center" variants={formVariants} initial="hidden" animate="visible">
         <div className="w-full max-w-md mx-auto text-center bg-white rounded-3xl py-10 lg:py-12 px-6 lg:px-10 shadow-2xl border border-gray-100">
           <motion.h2
-            className="text-4xl font-extrabold text-[#0f6f5c] mb-8 tracking-tight"
+            className="text-4xl font-extrabold text-indigo-500 mb-8 tracking-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -152,10 +151,10 @@ const ClientLogin = () => {
                   value={credentials.email}
                   onChange={handleInputChange}
                   placeholder=""
-                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-[#0f6f5c] shadow-md"
+                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-indigo-600 shadow-md"
                   required
                 />
-                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#0f6f5c]">
+                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600">
                   <FontAwesomeIcon icon={faEnvelope} /> <span>Email</span>
                 </label>
               </motion.div>
@@ -167,17 +166,17 @@ const ClientLogin = () => {
                   value={credentials.password}
                   onChange={handleInputChange}
                   placeholder=""
-                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-[#0f6f5c] shadow-md"
+                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-indigo-600 shadow-md"
                   required
                 />
-                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#0f6f5c]">
+                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600">
                   <FontAwesomeIcon icon={faLock} /> <span>Password</span>
                 </label>
               </motion.div>
 
               <motion.button
                 type="submit"
-                className={`py-3 px-6 rounded-full font-semibold text-white w-2/3 mx-auto flex justify-center items-center bg-gradient-to-r from-[#0f6f5c] to-teal-500 hover:from-teal-600 hover:to-teal-700 transition-all duration-300 shadow-md ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`py-3 px-6 rounded-full font-semibold text-white w-2/3 mx-auto flex justify-center items-center bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 shadow-md ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                 whileHover={{ scale: loading ? 1 : 1.05 }}
                 whileTap={{ scale: loading ? 1 : 0.95 }}
                 disabled={loading}
@@ -195,12 +194,12 @@ const ClientLogin = () => {
               <motion.div className="flex flex-col items-center mt-6 space-y-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}>
                 <p className="text-sm text-gray-600">
                   New Here?{" "}
-                  <Link to="/client-register" className="text-[#0f6f5c] font-semibold hover:underline transition-all">
+                  <Link to="/client-register" className="text-indigo-600 font-semibold hover:underline transition-all">
                     Sign Up
                   </Link>
                 </p>
                 <p
-                  className="text-sm text-gray-600 cursor-pointer hover:text-[#0f6f5c] transition-all"
+                  className="text-sm text-gray-600 cursor-pointer hover:text-indigo-600 transition-all"
                   onClick={handleForgotPassword}
                 >
                   Forgot Password? Reset Here
@@ -219,12 +218,12 @@ const ClientLogin = () => {
                   value={resetOtp}
                   onChange={(e) => setResetOtp(e.target.value)}
                   placeholder=""
-                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-[#0f6f5c] shadow-md"
+                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-indigo-600 shadow-md"
                   required
                   maxLength={6}
                   pattern="\d{6}"
                 />
-                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#0f6f5c]">
+                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600">
                   <FontAwesomeIcon icon={faKey} /> <span>OTP</span>
                 </label>
               </motion.div>
@@ -235,18 +234,18 @@ const ClientLogin = () => {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder=""
-                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-[#0f6f5c] shadow-md"
+                  className="peer h-full w-full rounded-xl border border-gray-200 bg-transparent px-12 py-3 text-sm text-gray-700 outline-none transition-all placeholder-shown:border-gray-200 focus:border-2 focus:border-indigo-600 shadow-md"
                   required
                   minLength={6}
                 />
-                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#0f6f5c]">
+                <label className="pointer-events-none absolute left-3 -top-4 flex items-center space-x-2 text-xs font-medium text-gray-800 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600">
                   <FontAwesomeIcon icon={faLock} /> <span>New Password</span>
                 </label>
               </motion.div>
 
               <motion.button
                 type="submit"
-                className={`py-3 px-6 rounded-full font-semibold text-white w-2/3 mx-auto flex justify-center items-center bg-gradient-to-r from-[#0f6f5c] to-teal-500 hover:from-teal-600 hover:to-teal-700 transition-all duration-300 shadow-md ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`py-3 px-6 rounded-full font-semibold text-white w-2/3 mx-auto flex justify-center items-center bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 shadow-md ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                 whileHover={{ scale: loading ? 1 : 1.05 }}
                 whileTap={{ scale: loading ? 1 : 0.95 }}
                 disabled={loading}
@@ -262,7 +261,7 @@ const ClientLogin = () => {
               </motion.button>
 
               <motion.p
-                className="text-sm text-gray-600 text-center mt-6 cursor-pointer hover:text-[#0f6f5c] transition-all"
+                className="text-sm text-gray-600 text-center mt-6 cursor-pointer hover:text-indigo-600 transition-all"
                 onClick={() => setForgotPassword(false)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
