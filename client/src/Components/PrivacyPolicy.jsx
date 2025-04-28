@@ -5,7 +5,7 @@ import { FiChevronDown, FiChevronUp, FiMail, FiLock, FiCreditCard, FiUser, FiGlo
 const privacySections = [
   {
     title: "1. Information We Collect",
-    icon: <FiUser className="text-teal-600" />,
+    icon: <FiUser className="text-indigo-600" />,
     content: (
       <ul className="list-disc pl-5 space-y-2">
         <li><strong>Personal Information:</strong> Name, email, phone number, and payment details.</li>
@@ -16,7 +16,7 @@ const privacySections = [
   },
   {
     title: "2. How We Use Your Data",
-    icon: <FiGlobe className="text-teal-600" />,
+    icon: <FiGlobe className="text-indigo-600" />,
     content: (
       <ul className="list-disc pl-5 space-y-2">
         <li>To provide and improve our services.</li>
@@ -27,7 +27,7 @@ const privacySections = [
   },
   {
     title: "3. Data Security",
-    icon: <FiLock className="text-teal-600" />,
+    icon: <FiLock className="text-indigo-600" />,
     content: (
       <ul className="list-disc pl-5 space-y-2">
         <li>We use encryption and secure servers to protect user data.</li>
@@ -37,14 +37,14 @@ const privacySections = [
   },
   {
     title: "4. Third-Party Sharing",
-    icon: <FiUser className="text-teal-600" />,
+    icon: <FiUser className="text-indigo-600" />,
     content: (
       <p>We do not sell or share personal data except as required for legal compliance or service delivery (e.g., payment processing).</p>
     )
   },
   {
     title: "5. User Rights",
-    icon: <FiUser className="text-teal-600" />,
+    icon: <FiUser className="text-indigo-600" />,
     content: (
       <ul className="list-disc pl-5 space-y-2">
         <li>Users can update or delete their accounts at any time.</li>
@@ -54,7 +54,7 @@ const privacySections = [
   },
   {
     title: "6. Cookies & Tracking",
-    icon: <FiGlobe className="text-teal-600" />,
+    icon: <FiGlobe className="text-indigo-600" />,
     content: (
       <ul className="list-disc pl-5 space-y-2">
         <li>We use cookies to improve website performance and personalize user experience.</li>
@@ -64,16 +64,16 @@ const privacySections = [
   },
   {
     title: "7. Changes to Privacy Policy",
-    icon: <FiLock className="text-teal-600" />,
+    icon: <FiLock className="text-indigo-600" />,
     content: (
       <p>Updates to this policy will be posted on the website.</p>
     )
   },
   {
     title: "8. Contact for Privacy Concerns",
-    icon: <FiMail className="text-teal-600" />,
+    icon: <FiMail className="text-indigo-600" />,
     content: (
-      <p>For privacy-related queries, contact <a href="mailto:privacy@solvit.com" className="text-teal-600 hover:underline">privacy@solvit.com</a>.</p>
+      <p>For privacy-related queries, contact <a href="mailto:privacy@solvit.com" className="text-indigo-600 hover:underline">privacy@solvit.com</a>.</p>
     )
   }
 ];
@@ -106,7 +106,7 @@ const PrivacyPolicy = () => {
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div className="text-center mb-16" variants={itemVariants}>
-          <span className="text-sm font-semibold tracking-wider text-teal-600 uppercase">
+          <span className="text-sm font-semibold tracking-wider text-indigo-600 uppercase">
             Data Protection
           </span>
           <h1 className="mt-2 text-4xl md:text-5xl font-bold text-gray-900">
@@ -191,7 +191,7 @@ const PrivacyPolicy = () => {
             </p>
             <motion.a
               href="mailto:privacy@solvit.com"
-              className="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

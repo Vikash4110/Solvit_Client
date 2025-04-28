@@ -83,7 +83,7 @@ const TermCondition = () => {
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div className="text-center mb-16" variants={itemVariants}>
-          <span className="text-sm font-semibold tracking-wider text-teal-600 uppercase">
+          <span className="text-sm font-semibold tracking-wider text-indigo-600 uppercase">
             Legal Information
           </span>
           <h1 className="mt-2 text-4xl md:text-5xl font-bold text-gray-900">
@@ -161,7 +161,7 @@ const TermCondition = () => {
             </p>
             <motion.a
               href="mailto:solvitcounselling@gmail.com"
-              className="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

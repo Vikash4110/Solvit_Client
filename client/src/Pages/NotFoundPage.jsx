@@ -70,7 +70,7 @@ const NotFoundPage = () => {
         >
           <FontAwesomeIcon
             icon={faExclamationTriangle}
-            className="text-teal-500 text-6xl"
+            className="text-indigo-500 text-6xl"
           />
         </motion.div>
 
@@ -92,7 +92,7 @@ const NotFoundPage = () => {
 
         {/* Back Button */}
         <motion.button
-          className="inline-flex items-center px-6 py-3 bg-teal-500 text-white font-semibold rounded-xl shadow-md hover:bg-teal-600 focus:outline-none transition-all"
+          className="inline-flex items-center px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-600 focus:outline-none transition-all"
           onClick={() => navigate(-1)}
           variants={buttonVariants}
           whileHover="hover"
