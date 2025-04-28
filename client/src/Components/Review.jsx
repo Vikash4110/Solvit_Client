@@ -49,7 +49,7 @@ const Review = () => {
 
   return (
     <motion.section
-      className="py-24 bg-gradient-to-b from-gray-50 to-white"
+      className="py-24 "
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}

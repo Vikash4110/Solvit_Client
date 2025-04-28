@@ -193,7 +193,7 @@ const OurServices = () => {
 
   return (
     <motion.section
-      className="py-16 bg-gray-50"
+      className="py-16 "
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

@@ -35,7 +35,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-teal-50 py-24 min-h-screen flex items-center">
+    <section className="py-24 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
@@ -92,8 +92,8 @@ const HeroSection = () => {
               />
             </motion.div>
             {/* Decorative Elements */}
-            <div className="absolute -top-8 -left-8 w-40 h-40 bg-indigo-200 rounded-full opacity-20 blur-xl -z-10"></div>
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-200 rounded-full opacity-20 blur-xl -z-10"></div>
+            <div className="absolute -top-8 -left-8 w-40 h-40 rounded-full opacity-20 blur-xl -z-10"></div>
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full opacity-20 blur-xl -z-10"></div>
           </div>
         </motion.div>
       </div>

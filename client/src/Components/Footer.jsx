@@ -124,7 +124,7 @@ const Footer = () => {
                 >
                   <a
                     href={url}
-                    className="flex items-center justify-center w-12 h-12 bg-indigo-800 rounded-full hover:bg-indigo-600 transition-all duration-300 shadow-md"
+                    className="flex items-center justify-center w-12 h-12 bg-teal-800 rounded-full hover:bg-indigo-600 transition-all duration-300 shadow-md"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit our ${Icon.name} page`}
@@ -192,7 +192,7 @@ const Footer = () => {
               <motion.li variants={listItemVariants}>
                 <a
                   href="mailto:solvitcounselling@gmail.com"
-                  className="text-base text-indigo-100 hover:text-white hover:underline transition-all duration-200"
+                  className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
                 >
                   Email: solvitcounselling@gmail.com
                 </a>
