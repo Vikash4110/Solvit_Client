@@ -610,7 +610,7 @@ const CounselorDashboard = () => {
               <div className="bg-indigo-600 p-2 rounded-lg">
                 <FaUser className="text-white text-xl" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">CounselPro</h2>
+              <h2 className="text-2xl font-bold text-gray-800">Solvit</h2>
             </div>
             <p className="text-xs text-gray-500 bg-indigo-50 px-2 py-1 rounded-full">Counselor Dashboard</p>
           </div>
