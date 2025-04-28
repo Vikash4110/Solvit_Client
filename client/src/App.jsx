@@ -19,6 +19,7 @@ import ClientProfile from "./Pages/ClientProfile";
 import FindCounselors from "./Components/FindCounselor";
 import CounselorProfile from "./Components/CounselorShowProfile";
 import AboutUs from "./Components/AboutUs";
+import Contact from "./Pages/Contact";
 import NotFoundPage from "./Pages/NotFoundPage";
 import TermCondition from "./Components/TermCondition";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
@@ -57,6 +58,7 @@ function App() {
           {/* CounselorRoutes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/counselor-register" element={<Register />} />
           <Route path="/our-counselors" element={<OurCounselors />} />
 
