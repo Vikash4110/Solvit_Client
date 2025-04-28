@@ -58,8 +58,8 @@ const Review = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div className="text-center mb-16" variants={itemVariants}>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600">
-            Voices of <span className="text-teal-600">Transformation</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-indigo-500 to-indigo-600">
+            Voices of <span className="text-black">Transformation</span>
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Discover how Solvit has empowered individuals across India to find
@@ -89,14 +89,14 @@ const Review = () => {
                 ))}
               </div>
 
-              <FaQuoteLeft className="text-teal-200 text-4xl mb-6 opacity-75" />
+              <FaQuoteLeft className="text-indigo-200 text-4xl mb-6 opacity-75" />
 
               <p className="text-gray-700 italic text-base leading-relaxed mb-6">
                 "{testimonial.content}"
               </p>
 
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-200 shadow-sm">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-indigo-200 shadow-sm">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -127,7 +127,7 @@ const Review = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-4 px-10 rounded-full hover:from-teal-600 hover:to-indigo-700 transition-all shadow-lg"
+            className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold py-4 px-10 rounded-full hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-lg"
           >
             Read More Success Stories
           </motion.button>

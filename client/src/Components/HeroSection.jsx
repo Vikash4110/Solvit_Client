@@ -46,7 +46,7 @@ const HeroSection = () => {
           {/* Left Side - Text and Buttons */}
           <div className="space-y-10" data-aos="fade-up">
             <motion.h1
-              className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-teal-600 via-teal-400 to-indigo-600 bg-clip-text text-transparent leading-tight tracking-tight"
+              className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-indigo-600 via-indigo-400 to-indigo-600 bg-clip-text text-transparent leading-tight tracking-tight"
               variants={textVariants}
             >
               Empowering Your Journey with Expert Support
@@ -64,7 +64,7 @@ const HeroSection = () => {
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Link
                   to="/counselor-register"
-                  className="bg-gradient-to-r from-teal-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:from-teal-700 hover:to-indigo-700 transition-all duration-300 shadow-lg"
+                  className="bg-gradient-to-r from-indigo-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:from-indigo-700 hover:to-indigo-700 transition-all duration-300 shadow-lg"
                 >
                   <FaUserPlus className="w-5 h-5" />
                   <span>Join as a Counselor</span>
@@ -73,7 +73,7 @@ const HeroSection = () => {
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Link
                   to="/client-register"
-                  className="border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:bg-teal-50 hover:border-teal-700 transition-all duration-300 shadow-lg"
+                  className="border-2 border-indigo-600 text-indigo-600 px-8 py-4 rounded-full font-semibold flex items-center space-x-3 hover:bg-indigo-50 hover:border-indigo-700 transition-all duration-300 shadow-lg"
                 >
                   <FaComments className="w-5 h-5" />
                   <span>Talk to a Counselor</span>
@@ -92,7 +92,7 @@ const HeroSection = () => {
               />
             </motion.div>
             {/* Decorative Elements */}
-            <div className="absolute -top-8 -left-8 w-40 h-40 bg-teal-200 rounded-full opacity-20 blur-xl -z-10"></div>
+            <div className="absolute -top-8 -left-8 w-40 h-40 bg-indigo-200 rounded-full opacity-20 blur-xl -z-10"></div>
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-200 rounded-full opacity-20 blur-xl -z-10"></div>
           </div>
         </motion.div>

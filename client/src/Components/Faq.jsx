@@ -58,7 +58,7 @@ const Faq = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div className="text-center mb-12" variants={itemVariants}>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-indigo-600">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-indigo-500 to-indigo-600">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-700 leading-relaxed">
@@ -86,9 +86,9 @@ const Faq = () => {
                   transition={{ duration: 0.3 }}
                 >
                   {activeIndex === index ? (
-                    <FaMinus className="text-teal-500" />
+                    <FaMinus className="text-indigo-500" />
                   ) : (
-                    <FaPlus className="text-teal-500" />
+                    <FaPlus className="text-indigo-500" />
                   )}
                 </motion.div>
               </button>
@@ -120,7 +120,7 @@ const Faq = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full hover:from-teal-600 hover:to-indigo-700 transition-all shadow-lg"
+            className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-lg"
           >
             Need More Help? Contact Us
           </motion.button>

@@ -106,7 +106,7 @@ const Navbar = () => {
                 {/* <FaComments className="h-6 w-6 text-white" /> */}
                 <img src={logo} className="h- w-16 text-white" alt="" />     
               <motion.span className="text-2xl font-bold text-gray-800">
-                <span className="text-teal-600">Solvit</span>
+                <span className="text-indigo-600">Solvit</span>
               </motion.span>
             </Link>
           </motion.div>
@@ -119,8 +119,8 @@ const Navbar = () => {
                   to={link.to}
                   className={`px-4 py-2.5 rounded-md font-medium flex items-center transition-all ${
                     location.pathname === link.to
-                      ? "text-teal-600 bg-teal-50"
-                      : "text-gray-700 hover:text-teal-600 hover:bg-teal-50"
+                      ? "text-indigo-600 bg-teal-50"
+                      : "text-gray-700 hover:text-indigo-600 hover:bg-teal-50"
                   }`}
                 >
                   <span className="mr-2">{link.icon}</span>
@@ -142,7 +142,7 @@ const Navbar = () => {
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-teal-50 transition-colors"
                   >
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white font-semibold">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 flex items-center justify-center text-white font-semibold">
                       {user?.fullName?.charAt(0) || "U"}
                     </div>
                     <span className="font-medium text-gray-700">
@@ -174,13 +174,13 @@ const Navbar = () => {
                         </div>
                         <Link
                           to={profileLink}
-                          className="px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors flex items-center"
+                          className="px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-indigo-600 transition-colors flex items-center"
                         >
                           <FaUser className="mr-3 text-gray-500" /> Profile
                         </Link>
                         <Link
                           to={dashboardLink}
-                          className="px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors flex items-center"
+                          className="px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-indigo-600 transition-colors flex items-center"
                         >
                           <FaHome className="mr-3 text-gray-500" /> Dashboard
                         </Link>
@@ -199,13 +199,13 @@ const Navbar = () => {
               <>
                 <Link
                   to="/counselor-login"
-                  className="hidden lg:flex items-center px-4 py-2 rounded-md font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 transition-colors"
+                  className="hidden lg:flex items-center px-4 py-2 rounded-md font-medium text-gray-700 hover:text-indigo-600 hover:bg-teal-50 transition-colors"
                 >
                   <FaUserTie className="mr-2" /> Counselor Login
                 </Link>
                 <Link
                   to="/client-login"
-                  className="hidden lg:flex items-center px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-md font-medium hover:from-teal-700 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg"
+                  className="hidden lg:flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-600 text-white rounded-md font-medium hover:from-indigo-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
                 >
                   <FaUser className="mr-2" /> Client Login
                 </Link>
@@ -215,7 +215,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-colors"
+              className="lg:hidden p-2 text-gray-600 hover:text-indigo-600 transition-colors"
               aria-label="Menu"
             >
               {isOpen ? (
@@ -243,13 +243,13 @@ const Navbar = () => {
                   placeholder="Search counselors, topics..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full p-3 pl-10 pr-4 border border-gray-200 bg-gray-50 text-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white"
+                  className="w-full p-3 pl-10 pr-4 border border-gray-200 bg-gray-50 text-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white"
                   autoFocus
                 />
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <button
                   type="submit"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-teal-600 font-medium"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-indigo-600 font-medium"
                 >
                   Search
                 </button>
@@ -277,7 +277,7 @@ const Navbar = () => {
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full p-3 pl-10 pr-4 border border-gray-200 bg-gray-50 text-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full p-3 pl-10 pr-4 border border-gray-200 bg-gray-50 text-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </form>
@@ -289,8 +289,8 @@ const Navbar = () => {
                       to={link.to}
                       className={`px-4 py-3 rounded-md font-medium flex items-center ${
                         location.pathname === link.to
-                          ? "bg-teal-50 text-teal-600"
-                          : "text-gray-700 hover:bg-teal-50 hover:text-teal-600"
+                          ? "bg-indigo-50 text-indigo-600"
+                          : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
@@ -305,14 +305,14 @@ const Navbar = () => {
                     <div className="border-t border-gray-200 my-2"></div>
                     <Link
                       to={profileLink}
-                      className="px-4 py-3 rounded-md font-medium flex items-center text-gray-700 hover:bg-teal-50 hover:text-teal-600"
+                      className="px-4 py-3 rounded-md font-medium flex items-center text-gray-700 hover:bg-teal-50 hover:text-indigo-600"
                       onClick={() => setIsOpen(false)}
                     >
                       <FaUser className="mr-3 text-gray-500" /> Profile
                     </Link>
                     <Link
                       to={dashboardLink}
-                      className="px-4 py-3 rounded-md font-medium flex items-center text-gray-700 hover:bg-teal-50 hover:text-teal-600"
+                      className="px-4 py-3 rounded-md font-medium flex items-center text-gray-700 hover:bg-teal-50 hover:text-indigo-600"
                       onClick={() => setIsOpen(false)}
                     >
                       <FaHome className="mr-3 text-gray-500" /> Dashboard
@@ -329,14 +329,14 @@ const Navbar = () => {
                     <div className="border-t border-gray-200 my-2"></div>
                     <Link
                       to="/counselor-login"
-                      className="px-4 py-3 rounded-md font-medium flex items-center justify-center bg-teal-50 text-teal-600 hover:bg-teal-100"
+                      className="px-4 py-3 rounded-md font-medium flex items-center justify-center bg-teal-50 text-indigo-600 hover:bg-teal-100"
                       onClick={() => setIsOpen(false)}
                     >
                       <FaUserTie className="mr-2" /> Counselor Login
                     </Link>
                     <Link
                       to="/client-login"
-                      className="px-4 py-3 rounded-md font-medium flex items-center justify-center bg-gradient-to-r from-teal-600 to-emerald-600 text-white hover:from-teal-700 hover:to-emerald-700"
+                      className="px-4 py-3 rounded-md font-medium flex items-center justify-center bg-gradient-to-r from-indigo-600 to-indigo-600 text-white hover:from-indigo-700 hover:to-indigo-700"
                       onClick={() => setIsOpen(false)}
                     >
                       <FaUser className="mr-2" /> Client Login

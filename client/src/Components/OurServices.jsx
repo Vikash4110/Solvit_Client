@@ -205,7 +205,7 @@ const OurServices = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-12" variants={containerVariants}>
           <motion.h2
-            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600"
+            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-600"
             variants={headerVariants}
           >
             Our Services
@@ -282,7 +282,7 @@ const OurServices = () => {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Previous slide"
               >
-                <FaChevronLeft className="text-teal-500 text-lg" />
+                <FaChevronLeft className="text-indigo-500 text-lg" />
               </motion.button>
               <motion.button
                 className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white transition-all z-10"
@@ -291,7 +291,7 @@ const OurServices = () => {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Next slide"
               >
-                <FaChevronRight className="text-teal-500 text-lg" />
+                <FaChevronRight className="text-indigo-500 text-lg" />
               </motion.button>
             </>
           )}
@@ -304,7 +304,7 @@ const OurServices = () => {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    currentIndex === index ? "bg-teal-500" : "bg-gray-300"
+                    currentIndex === index ? "bg-indigo-500" : "bg-gray-300"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -317,7 +317,7 @@ const OurServices = () => {
         <motion.div className="text-center mt-12" variants={containerVariants}>
           <motion.a
             href="/client-register"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-teal-600 hover:to-indigo-700 transition-all duration-300"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"

@@ -67,7 +67,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="py-16 bg-gradient-to-b from-teal-700 to-teal-900 text-white"
+      className="py-16 bg-gradient-to-b from-indigo-500 to-indigo-700 text-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -86,7 +86,7 @@ const Footer = () => {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 />
                 <motion.div
-                  className="bg-teal-300 w-4 h-4 rounded-full shadow-lg"
+                  className="bg-indigo-300 w-4 h-4 rounded-full shadow-lg"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -108,7 +108,7 @@ const Footer = () => {
               </div>
             </motion.div>
             <motion.p
-              className="text-base leading-relaxed text-teal-100"
+              className="text-base leading-relaxed text-indigo-100"
               variants={sectionVariants}
             >
               Your trusted partner in personal growth—connecting you with expert counselors across India.
@@ -124,7 +124,7 @@ const Footer = () => {
                 >
                   <a
                     href={url}
-                    className="flex items-center justify-center w-12 h-12 bg-teal-800 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md"
+                    className="flex items-center justify-center w-12 h-12 bg-indigo-800 rounded-full hover:bg-indigo-600 transition-all duration-300 shadow-md"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit our ${Icon.name} page`}
@@ -139,7 +139,7 @@ const Footer = () => {
           {/* Support Section */}
           <motion.div variants={sectionVariants}>
             <motion.p
-              className="text-sm font-semibold tracking-widest text-teal-200 uppercase"
+              className="text-sm font-semibold tracking-widest text-indigo-200 uppercase"
               variants={sectionVariants}
             >
               Support
@@ -149,7 +149,7 @@ const Footer = () => {
                 <motion.li key={index} variants={listItemVariants} whileHover="hover">
                   <Link
                     to={url}
-                    className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                    className="text-base text-indigo-100 hover:text-white hover:underline transition-all duration-200"
                   >
                     {name}
                   </Link>
@@ -161,7 +161,7 @@ const Footer = () => {
           {/* Quick Links Section */}
           <motion.div variants={sectionVariants}>
             <motion.p
-              className="text-sm font-semibold tracking-widest text-teal-200 uppercase"
+              className="text-sm font-semibold tracking-widest text-indigo-200 uppercase"
               variants={sectionVariants}
             >
               Quick Links
@@ -171,7 +171,7 @@ const Footer = () => {
                 <motion.li key={index} variants={listItemVariants} whileHover="hover">
                   <Link
                     to={url}
-                    className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                    className="text-base text-indigo-100 hover:text-white hover:underline transition-all duration-200"
                   >
                     {name}
                   </Link>
@@ -183,7 +183,7 @@ const Footer = () => {
           {/* Contact Info Section */}
           <motion.div variants={sectionVariants}>
             <motion.p
-              className="text-sm font-semibold tracking-widest text-teal-200 uppercase"
+              className="text-sm font-semibold tracking-widest text-indigo-200 uppercase"
               variants={sectionVariants}
             >
               Get in Touch
@@ -192,7 +192,7 @@ const Footer = () => {
               <motion.li variants={listItemVariants}>
                 <a
                   href="mailto:solvitcounselling@gmail.com"
-                  className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                  className="text-base text-indigo-100 hover:text-white hover:underline transition-all duration-200"
                 >
                   Email: solvitcounselling@gmail.com
                 </a>
@@ -200,13 +200,13 @@ const Footer = () => {
               <motion.li variants={listItemVariants}>
                 <a
                   href="tel:+918055386973"
-                  className="text-base text-teal-100 hover:text-white hover:underline transition-all duration-200"
+                  className="text-base text-indigo-100 hover:text-white hover:underline transition-all duration-200"
                 >
                   Phone: +91 8055386973
                 </a>
               </motion.li>
               <motion.li variants={listItemVariants}>
-                <p className="text-base text-teal-100">Solvit Pvt. Ltd.  Atal Nagar, Naya Raipur– 493661, India 
+                <p className="text-base text-indigo-100">Solvit Pvt. Ltd.  Atal Nagar, Naya Raipur– 493661, India 
 </p>
               </motion.li>
             </motion.ul>
@@ -215,13 +215,13 @@ const Footer = () => {
 
         {/* Divider and Copyright */}
         <motion.hr
-          className="mt-16 mb-8 border-teal-500 opacity-50"
+          className="mt-16 mb-8 border-indigo-500 opacity-50"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         />
         <motion.p
-          className="text-sm text-center text-teal-200"
+          className="text-sm text-center text-indigo-200"
           variants={sectionVariants}
         >
           © {new Date().getFullYear()} Solvit. All Rights Reserved.

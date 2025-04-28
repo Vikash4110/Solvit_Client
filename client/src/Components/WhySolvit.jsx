@@ -66,7 +66,7 @@ const WhySolvit = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-16" variants={containerVariants}>
           <motion.h2 
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-teal-500 to-indigo-600" 
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text  bg-gradient-to-r from-indigo-500 to-indigo-600" 
             variants={headerVariants}
           >
             Why Choose Solvit?
@@ -124,7 +124,7 @@ const WhySolvit = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-4 px-10 rounded-full hover:from-teal-600 hover:to-indigo-700 transition-all shadow-lg"
+            className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold py-4 px-10 rounded-full hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-lg"
           >
            <Link to="client-register">Start Your Journey Today</Link> 
           </motion.button>

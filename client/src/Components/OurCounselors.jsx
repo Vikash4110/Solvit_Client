@@ -28,7 +28,7 @@ const OurCounselors = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Header */}
         <motion.div className="mb-12" variants={itemVariants}>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-600">
             Our Counselors
           </h1>
           <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
@@ -41,16 +41,16 @@ const OurCounselors = () => {
           className="bg-white rounded-2xl shadow-xl p-12 border border-gray-100 relative overflow-hidden"
           variants={itemVariants}
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-teal-200 rounded-full opacity-20 blur-xl -translate-y-1/2 translate-x-1/2"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-200 rounded-full opacity-20 blur-xl -translate-y-1/2 translate-x-1/2"></div>
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-200 rounded-full opacity-20 blur-xl translate-y-1/2 -translate-x-1/2"></div>
-          <FaUsers className="text-teal-500 text-6xl mx-auto mb-6" />
+          <FaUsers className="text-indigo-500 text-6xl mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
           <p className="text-lg text-gray-600 leading-relaxed max-w-md mx-auto mb-8">
             We’re working hard to bring you a curated list of expert counselors and coaches. Stay tuned for updates!
           </p>
           <motion.a
             href="/"
-            className="inline-block bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full hover:from-teal-600 hover:to-indigo-700 transition-all shadow-lg"
+            className="inline-block bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-lg"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"

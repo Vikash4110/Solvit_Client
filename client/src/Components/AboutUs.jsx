@@ -10,39 +10,38 @@ import {
   FaWallet
 } from 'react-icons/fa';
 import { GiBrain } from 'react-icons/gi';
-import teamPlaceholder from '../assets/IMG_2644.png'; // Replace with your image
 import aboutHero from '../assets/IMG_2644.png'; // Replace with your image
 import OurMission from '../Components/OurMission';
 import { Link } from 'react-router-dom'
 
 const AboutUs = () => {
   const stats = [
-    { value: '10K+', label: 'Lives Touched', icon: <FaHeart className="text-teal-600 text-3xl" /> },
-    { value: '500+', label: 'Verified Experts', icon: <FaUserCheck className="text-teal-600 text-3xl" /> },
-    { value: '100%', label: 'Confidential', icon: <FaLock className="text-teal-600 text-3xl" /> },
-    { value: '24/7', label: 'Support Available', icon: <FaHandsHelping className="text-teal-600 text-3xl" /> },
+    { value: '10K+', label: 'Lives Touched', icon: <FaHeart className="text-indigo-600 text-3xl" /> },
+    { value: '500+', label: 'Verified Experts', icon: <FaUserCheck className="text-indigo-600 text-3xl" /> },
+    { value: '100%', label: 'Confidential', icon: <FaLock className="text-indigo-600 text-3xl" /> },
+    { value: '24/7', label: 'Support Available', icon: <FaHandsHelping className="text-indigo-600 text-3xl" /> },
   ];
 
   const values = [
     {
       title: "Empathy First",
       description: "We listen without judgment and meet you where you are in your journey.",
-      icon: <FaHeart className="text-teal-500 text-2xl" />
+      icon: <FaHeart className="text-indigo-500 text-2xl" />
     },
     {
       title: "Privacy Matters",
       description: "Your sessions are completely secure and confidential with end-to-end encryption.",
-      icon: <FaLock className="text-teal-500 text-2xl" />
+      icon: <FaLock className="text-indigo-500 text-2xl" />
     },
     {
       title: "Holistic Help",
       description: "Mental, emotional, academic, and career guidance — all under one roof.",
-      icon: <GiBrain className="text-teal-500 text-2xl" />
+      icon: <GiBrain className="text-indigo-500 text-2xl" />
     },
     {
       title: "Made for India",
       description: "Built with understanding of local needs, languages, and cultural context.",
-      icon: <FaGlobeAsia className="text-teal-500 text-2xl" />
+      icon: <FaGlobeAsia className="text-indigo-500 text-2xl" />
     }
   ];
 
@@ -50,31 +49,31 @@ const AboutUs = () => {
     {
       title: "Verified Experts",
       description: "Connect with certified counselors and coaches ensuring trusted, professional guidance.",
-      icon: <FaUserShield className="text-teal-500 text-2xl" />
+      icon: <FaUserShield className="text-indigo-500 text-2xl" />
     },
     {
       title: "Personalized Support",
       description: "Tailored sessions to fit your unique needs with flexible consultation options.",
-      icon: <FaHandsHelping className="text-teal-500 text-2xl" />
+      icon: <FaHandsHelping className="text-indigo-500 text-2xl" />
     },
     {
       title: "Affordable Access",
       description: "Budget-friendly pricing tiers making expert advice accessible to everyone.",
-      icon: <FaWallet className="text-teal-500 text-2xl" />
+      icon: <FaWallet className="text-indigo-500 text-2xl" />
     }
   ];
 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-teal-700 to-blue-600 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-r from-indigo-700 to-blue-600 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={aboutHero} 
             alt="Mental health support" 
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-teal-900 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent"></div>
         </div>
         
         <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
@@ -87,13 +86,13 @@ const AboutUs = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Your Partner in Personal Growth
             </h1>
-            <p className="text-xl text-teal-100 mb-8">
+            <p className="text-xl text-indigo-100 mb-8">
               We believe everyone deserves access to the right support at the right time.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
+              className="bg-white text-indigo-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
             <Link to="/client-register"> Find Your Expert</Link> 
             </motion.button>
@@ -142,7 +141,7 @@ const AboutUs = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What We <span className="text-teal-600">Stand For</span>
+              What We <span className="text-indigo-600">Stand For</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our core values guide everything we do at Solvit to ensure you get the best support possible.
@@ -161,7 +160,7 @@ const AboutUs = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-teal-100 p-3 rounded-full">
+                  <div className="bg-indigo-100 p-3 rounded-full">
                     {value.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">{value.title}</h3>
@@ -184,7 +183,7 @@ const AboutUs = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why <span className="text-teal-600">Choose Solvit</span>
+              Why <span className="text-indigo-600">Choose Solvit</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Empowering you with the right support to overcome life's challenges—accessible, expert, and tailored to you.
@@ -195,7 +194,7 @@ const AboutUs = () => {
             {whyChooseUs.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all border-t-4 border-teal-500"
+                className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all border-t-4 border-indigo-500"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -203,7 +202,7 @@ const AboutUs = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-teal-100 p-3 rounded-full">
+                  <div className="bg-indigo-100 p-3 rounded-full">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">{feature.title}</h3>
@@ -216,7 +215,7 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-teal-700 to-blue-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-indigo-700 to-indigo-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -227,14 +226,14 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Take the First Step?
             </h2>
-            <p className="text-xl text-teal-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
               Join thousands who've found support and guidance through Solvit.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="bg-white text-indigo-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
                 <Link to="/client-register">Connect with an Expert</Link>
               </motion.button>

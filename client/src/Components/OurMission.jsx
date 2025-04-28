@@ -29,7 +29,7 @@ const OurMission = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-800 to-teal-700 text-white">
+    <section className="py-20 bg-gradient-to-r from-indigo-800 to-indigo-700 text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <motion.div 
@@ -40,11 +40,11 @@ const OurMission = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Our <span className="text-teal-300">Mission</span> & Values
+              Our <span className="text-indigo-300">Mission</span> & Values
             </h2>
             
             <div className="relative">
-              <div className="absolute -left-8 -top-8 w-32 h-32 bg-teal-400 rounded-full opacity-20 blur-xl"></div>
+              <div className="absolute -left-8 -top-8 w-32 h-32 bg-indigo-400 rounded-full opacity-20 blur-xl"></div>
               <div className="relative bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                 <p className="text-lg mb-6">
                   At Solvit, we’re committed to connecting you with trusted counselors and coaches 
@@ -70,7 +70,7 @@ const OurMission = () => {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="mt-8 bg-teal-400 text-blue-900 font-semibold py-3 px-8 rounded-lg hover:bg-teal-300 transition-all shadow-lg"
+              className="mt-8 bg-indigo-400 text-blue-900 font-semibold py-3 px-8 rounded-lg hover:bg-indigo-300 transition-all shadow-lg"
             >
               <Link to="/client-register">Get Started Today</Link> 
             </motion.button>
@@ -97,7 +97,7 @@ const OurMission = () => {
                     <div className="bg-white/20 p-3 rounded-full">
                       {point.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-teal-300">{point.title}</h3>
+                    <h3 className="text-xl font-bold text-indigo-300">{point.title}</h3>
                   </div>
                   <p className="text-white/90">{point.content}</p>
                 </motion.div>
