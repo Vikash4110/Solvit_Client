@@ -330,12 +330,12 @@ const Application = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-teal-50 flex items-center justify-center p-4 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50 flex items-center justify-center p-4 lg:p-8">
       <div className="w-full max-w-4xl bg-white rounded-xl shadow-xl overflow-hidden">
         {/* Header with progress steps */}
-        <div className="bg-gradient-to-r from-teal-600 to-teal-800 p-6 text-white">
+        <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 p-6 text-white">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">Counselor Application</h1>
-          <p className="text-teal-100 mb-6">
+          <p className="text-indigo-100 mb-6">
             Complete your profile to start helping clients on our platform
           </p>
           
@@ -343,16 +343,16 @@ const Application = () => {
             {steps.map((step) => (
               <div key={step.number} className="flex flex-col items-center z-10">
                 <div 
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${stage >= step.number ? 'bg-white text-teal-600' : 'bg-teal-500 text-white'}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${stage >= step.number ? 'bg-white text-indigo-600' : 'bg-indigo-500 text-white'}`}
                 >
                   {step.number}
                 </div>
-                <span className={`text-xs mt-2 ${stage >= step.number ? 'font-semibold' : 'text-teal-200'}`}>
+                <span className={`text-xs mt-2 ${stage >= step.number ? 'font-semibold' : 'text-indigo-200'}`}>
                   {step.title}
                 </span>
               </div>
             ))}
-            <div className="absolute h-1 bg-teal-400 top-5 left-10 right-10 -z-0">
+            <div className="absolute h-1 bg-indigo-400 top-5 left-10 right-10 -z-0">
               <motion.div 
                 className="h-full bg-white"
                 initial={{ width: 0 }}
@@ -366,8 +366,8 @@ const Application = () => {
         <div className="p-6 md:p-8">
           {status === "Pending" || status === "Rejected" ? (
             <div className="text-center py-12">
-              <div className="mx-auto w-24 h-24 bg-teal-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-12 h-12 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mx-auto w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
@@ -381,7 +381,7 @@ const Application = () => {
               </p>
               <button
                 onClick={() => navigate("/counselor-profile")}
-                className="px-6 py-3 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors"
+                className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
               >
                 View Application Status
               </button>
@@ -408,7 +408,7 @@ const Application = () => {
                             name="dob"
                             value={formData.dob}
                             onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                           />
                           <FontAwesomeIcon 
@@ -430,7 +430,7 @@ const Application = () => {
                             name="street"
                             value={formData.address.street}
                             onChange={(e) => handleNestedChange(e, "address", "street")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                           />
                           <FontAwesomeIcon 
@@ -448,7 +448,7 @@ const Application = () => {
                             name="city"
                             value={formData.address.city}
                             onChange={(e) => handleNestedChange(e, "address", "city")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                           />
                           <FontAwesomeIcon 
@@ -466,7 +466,7 @@ const Application = () => {
                             name="state"
                             value={formData.address.state}
                             onChange={(e) => handleNestedChange(e, "address", "state")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                           />
                           <FontAwesomeIcon 
@@ -484,7 +484,7 @@ const Application = () => {
                             name="postalCode"
                             value={formData.address.postalCode}
                             onChange={(e) => handleNestedChange(e, "address", "postalCode")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                             pattern="\d{6}"
                           />
@@ -511,7 +511,7 @@ const Application = () => {
                             name="yearsOfExperience"
                             value={formData.yearsOfExperience}
                             onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             required
                             min="0"
                           />
@@ -533,7 +533,7 @@ const Application = () => {
                           console.log("Checkbox Change - isLicensed:", e.target.checked, newFormData);
                           return newFormData;
                         })}
-                        className="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+                        className="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                       />
                       <label htmlFor="isLicensed" className="text-sm font-medium text-gray-700">
                         Are you a licensed professional?
@@ -553,7 +553,7 @@ const Application = () => {
                                 name="number"
                                 value={formData.licenseDetails.number}
                                 onChange={(e) => handleNestedChange(e, "licenseDetails", "number")}
-                                className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                                className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                                 required
                               />
                               <FontAwesomeIcon 
@@ -571,7 +571,7 @@ const Application = () => {
                                 name="issuingAuthority"
                                 value={formData.licenseDetails.issuingAuthority}
                                 onChange={(e) => handleNestedChange(e, "licenseDetails", "issuingAuthority")}
-                                className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                                className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                                 required
                               />
                               <FontAwesomeIcon 
@@ -599,7 +599,7 @@ const Application = () => {
                               type="checkbox"
                               checked={formData.availability[time]}
                               onChange={(e) => handleCheckboxChange(e, "availability", time)}
-                              className="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+                              className="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                             />
                             <span className="text-gray-700 capitalize">{time}</span>
                           </label>
@@ -616,7 +616,7 @@ const Application = () => {
                           value={formData.preferredSessionMode.join(", ")}
                           onChange={(e) => handleArrayChange(e, "preferredSessionMode")}
                           placeholder="Video Call, Chat, Audio Call"
-                          className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                          className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                           required
                         />
                         <FontAwesomeIcon 
@@ -636,7 +636,7 @@ const Application = () => {
                             name="perSession"
                             value={formData.pricing.perSession}
                             onChange={(e) => handleNestedChange(e, "pricing", "perSession")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             min="0"
                           />
                           <FontAwesomeIcon 
@@ -654,7 +654,7 @@ const Application = () => {
                             name="subscription"
                             value={formData.pricing.subscription}
                             onChange={(e) => handleNestedChange(e, "pricing", "subscription")}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                             min="0"
                           />
                           <FontAwesomeIcon 
@@ -673,7 +673,7 @@ const Application = () => {
                             value={formData.pricing.customPricing}
                             onChange={(e) => handleNestedChange(e, "pricing", "customPricing")}
                             placeholder="e.g., Sliding scale"
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                           />
                           <FontAwesomeIcon 
                             icon={faMoneyBillWave} 
@@ -689,7 +689,7 @@ const Application = () => {
                         name="paymentMethod"
                         value={formData.paymentMethod}
                         onChange={handleInputChange}
-                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                         required
                       >
                         <option value="">Select Payment Method</option>
@@ -706,7 +706,7 @@ const Application = () => {
                         name="bio"
                         value={formData.bio}
                         onChange={handleInputChange}
-                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border h-32"
+                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border h-32"
                         required
                         minLength="10"
                         placeholder="Tell us about your professional background, approach, and specialties..."
@@ -723,7 +723,7 @@ const Application = () => {
                           value={formData.languages.join(", ")}
                           onChange={(e) => handleArrayChange(e, "languages")}
                           placeholder="English, Hindi, Spanish..."
-                          className="w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+                          className="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 border"
                           required
                         />
                         <FontAwesomeIcon 
@@ -754,7 +754,7 @@ const Application = () => {
                           <div className="mt-1">
                             <label
                               htmlFor={field}
-                              className={`flex flex-col items-center justify-center w-full p-6 border-2 border-dashed rounded-lg cursor-pointer ${files[field] ? 'border-teal-500 bg-teal-50' : 'border-gray-300 hover:border-gray-400'}`}
+                              className={`flex flex-col items-center justify-center w-full p-6 border-2 border-dashed rounded-lg cursor-pointer ${files[field] ? 'border-indigo-500 bg-indigo-50' : 'border-gray-300 hover:border-gray-400'}`}
                             >
                               {field === "profilePicture" && filePreviews.profilePicture ? (
                                 <div className="relative w-full h-40">
@@ -771,10 +771,10 @@ const Application = () => {
                                 <>
                                   <FontAwesomeIcon 
                                     icon={getFileIcon(field)} 
-                                    className={`w-10 h-10 mb-3 ${files[field] ? 'text-teal-600' : 'text-gray-400'}`}
+                                    className={`w-10 h-10 mb-3 ${files[field] ? 'text-indigo-600' : 'text-gray-400'}`}
                                   />
                                   <div className="flex flex-col items-center text-sm text-center">
-                                    <p className={`mb-1 ${files[field] ? 'text-teal-600 font-medium' : 'text-gray-600'}`}>
+                                    <p className={`mb-1 ${files[field] ? 'text-indigo-600 font-medium' : 'text-gray-600'}`}>
                                       {files[field] 
                                         ? files[field].name 
                                         : `Click to upload ${field.replace(/([A-Z])/g, " $1").toLowerCase()}`}
@@ -823,7 +823,7 @@ const Application = () => {
                 <motion.button
                   type="button"
                   onClick={handleBack}
-                  className="inline-flex items-center px-5 py-2.5 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                  className="inline-flex items-center px-5 py-2.5 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -836,7 +836,7 @@ const Application = () => {
                 <motion.button
                   type="button"
                   onClick={handleNext}
-                  className="ml-auto inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                  className="ml-auto inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -848,7 +848,7 @@ const Application = () => {
                   type="submit"
                   onClick={handleSubmit}
                   disabled={loading}
-                  className={`ml-auto inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 ${loading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                  className={`ml-auto inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${loading ? 'opacity-75 cursor-not-allowed' : ''}`}
                   whileHover={{ scale: loading ? 1 : 1.02 }}
                   whileTap={{ scale: loading ? 1 : 0.98 }}
                 >
