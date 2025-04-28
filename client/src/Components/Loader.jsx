@@ -70,7 +70,7 @@ const Loader = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-gray-900/90 backdrop-blur-sm flex flex-col items-center justify-center z-50"
+      className="fixed inset-0  flex flex-col items-center justify-center z-50"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -97,7 +97,7 @@ const Loader = () => {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute w-3 h-3 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full`}
+            className={`absolute w-3 h-3 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-full`}
             style={{
               top: "10%",
               left: "50%",
@@ -113,7 +113,7 @@ const Loader = () => {
         
         {/* Central pulse effect */}
         <motion.div
-          className="absolute inset-8 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-cyan-500/20"
+          className="absolute inset-8 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-lg shadow-cyan-500/20"
           variants={pulseVariants}
           animate="animate"
         />
@@ -125,7 +125,7 @@ const Loader = () => {
         >
           <div className="text-center">
             <motion.div
-              className="text-2xl font-bold bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 10 }}
               animate={{ 
                 opacity: 1, 
@@ -140,7 +140,7 @@ const Loader = () => {
               SOLVIT
             </motion.div>
             <motion.div
-              className="text-xs text-cyan-200 mt-2"
+              className="text-sm text-black mt-2"
               initial={{ opacity: 0 }}
               animate={{ 
                 opacity: 0.8,
@@ -158,7 +158,7 @@ const Loader = () => {
       
       {/* Progress indicator */}
       <motion.div 
-        className="mt-8 w-40 h-1 bg-gray-700 rounded-full overflow-hidden"
+        className="mt-8 w-40 h-1 bg-indigo-700 rounded-full overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ 
           opacity: 1,
@@ -166,7 +166,7 @@ const Loader = () => {
         }}
       >
         <motion.div
-          className="h-full bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full"
+          className="h-full bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-full"
           initial={{ width: 0 }}
           animate={{ 
             width: "100%",
