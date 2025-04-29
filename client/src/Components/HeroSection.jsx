@@ -88,7 +88,7 @@ const HeroSection = () => {
               <img
                 src={heroImage}
                 alt="Counseling Support"
-                className="w-full max-w-lg mx-auto rounded-2xl object-cover  transform hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-lg mx-auto rounded-2xl object-cover  transform transition-transform duration-500"
               />
             </motion.div>
             {/* Decorative Elements */}

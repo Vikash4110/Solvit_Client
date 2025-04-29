@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faKey } from "@fortawesome/free-solid-svg-icons";
 import { RotatingLines } from "react-loader-spinner";
 import { motion } from "framer-motion";
-import Img from "../assets/vecteezy_two-women-sitting-in-chairs-talking_57226176.png";
+import Img from "../assets/login.png";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
