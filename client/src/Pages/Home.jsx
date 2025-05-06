@@ -60,7 +60,6 @@ const Home = () => {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background gradient elements */}
       <div className="fixed inset-0 -z-50 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50/20 via-white to-purple-50/30"></div>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full filter blur-[100px]"></div>

@@ -346,6 +346,28 @@ const getConnectedClients = async (req, res, next) => {
   }
 };
 
+// counselor-controller.js
+const getVerifiedCounselors = async (req, res, next) => {
+  try {
+    const counselors = await Counselor.find({ status: "Approved" })
+      .select("fullName specialization yearsOfExperience languages profilePicture bio")
+      .lean();
+
+    // Map counselors to include profile picture URL
+    const enrichedCounselors = counselors.map((counselor) => ({
+      ...counselor,
+      profilePictureUrl: counselor.profilePicture
+        ? `${process.env.BACKEND_URL}/api/counselors/file/${counselor.profilePicture}`
+        : "/default-profile.png",
+    }));
+
+    res.json(enrichedCounselors);
+  } catch (error) {
+    console.error("Get verified counselors error:", error);
+    next(error);
+  }
+};
+
 module.exports = {
   registerCounselor,
   verifyOTP,
@@ -357,5 +379,6 @@ module.exports = {
   getFile,
   getPendingRequests,
   respondRequest,
+  getVerifiedCounselors,
   getConnectedClients,
 };

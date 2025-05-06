@@ -11,6 +11,6 @@ const { adminAuthMiddleware } = require("../middlewares/admin-middleware");
 router.post("/login", loginAdmin);
 router.get("/pending-applications", adminAuthMiddleware, getPendingApplications);
 router.post("/update-application-status", adminAuthMiddleware, updateApplicationStatus);
-router.get("/file/:fileId", adminAuthMiddleware, getFile); // New route for admin file access
+router.get("/file/:fileId", adminAuthMiddleware, getFile); 
 
 module.exports = router;

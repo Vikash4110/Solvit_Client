@@ -11,6 +11,7 @@ const {
   getFile,
   getPendingRequests,
   respondRequest,
+  getVerifiedCounselors,
   getConnectedClients
 } = require("../controllers/counselor-controller");
 const { authMiddleware, validate } = require("../middlewares/counselor-middleware");
@@ -27,4 +28,6 @@ router.get("/file/:fileId",  getFile);
 router.get("/pending-requests", authMiddleware, getPendingRequests);
 router.post("/respond-request", authMiddleware, respondRequest);
 router.get("/connected-clients", authMiddleware, getConnectedClients);
+// counselor-router.js
+router.get("/verified-counselors", getVerifiedCounselors);
 module.exports = router;

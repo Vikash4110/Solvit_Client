@@ -137,7 +137,7 @@ const Loader = () => {
                 } 
               }}
             >
-              SOLVIT
+              Career Counsellor
             </motion.div>
             <motion.div
               className="text-sm text-black mt-2"
