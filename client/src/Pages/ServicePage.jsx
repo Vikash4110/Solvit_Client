@@ -184,7 +184,7 @@ const ServicePage = () => {
                   whileTap={{ scale: 0.98 }}
                   className="bg-gradient-to-r from-teal-500 to-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all"
                 >
-                  Book a Session
+                 <Link to="/client-register"> Book a Session</Link>
                 </motion.button>
               </div>
             </div>
@@ -270,7 +270,7 @@ const ServicePage = () => {
                       whileHover="hover"
                       whileTap="tap"
                     >
-                      View Profile
+                    <Link to="/client-register">Book Now</Link> 
                     </motion.button>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ const ServicePage = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get Started Today
+        <Link to="/client-register"> Get Started Today</Link>
           </motion.button>
         </motion.div>
       </div>
