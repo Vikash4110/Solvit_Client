@@ -29,6 +29,8 @@ import CounselorPendingRequests from "./Components/CounselorPendingRequests";
 import CounselorConnectedClients from "./Components/CounselorConnectedClients";
 import WithdrawRequests from "./Components/WithdrawRequests";
 import OurCounselors from "./Components/OurCounselors";
+import ServicePage from "./Pages/ServicePage";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Start false, update based on session
@@ -61,6 +63,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/counselor-register" element={<Register />} />
           <Route path="/our-counselors" element={<OurCounselors />} />
+          <Route path="/services/:serviceId" element={<ServicePage />} />
 
           <Route path="/counselor-login" element={<Login />} />
           <Route path="/counselor-application" element={<Application />} />
