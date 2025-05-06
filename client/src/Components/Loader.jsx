@@ -137,8 +137,7 @@ const Loader = () => {
                 } 
               }}
             >
-              Career Counsellor
-            </motion.div>
+Solvit            </motion.div>
             <motion.div
               className="text-sm text-black mt-2"
               initial={{ opacity: 0 }}
