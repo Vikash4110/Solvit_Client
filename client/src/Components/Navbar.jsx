@@ -86,20 +86,12 @@ const Navbar = () => {
   // Navigation links
   const navLinks = [
     { to: "/", text: "Home", icon: <FaHome className="text-lg" /> },
+    { to: "#", text: "Services", icon: <FaUserFriends className="text-lg" />, isDropdown: true },
     { to: "/about", text: "About", icon: <FaInfoCircle className="text-lg" /> },
     { to: "/our-counselors", text: "Counselors", icon: <FaUserFriends className="text-lg" /> },
     { to: "/contact", text: "Contact", icon: <FaComments className="text-lg" /> },
   ];
 
-  // Services dropdown items
-  // const servicesLinks = [
-  //   { to: "/", text: "Mental Health Counseling" },
-  //   { to: "/", text: "Life & Personal Development" },
-  //   { to: "/", text: "Relationship & Family Therapy" },
-  //   { to: "/", text: "Career & Professional Coaching" },
-  //   { to: "/", text: "Health & Wellness Coaching" },
-  //   { to: "/", text: "Academic & Student Support" },
-  // ];
   const servicesLinks = [
     { to: "/services/mental-health-counseling", text: "Mental Health Counseling" },
     { to: "/services/life-personal-development", text: "Life & Personal Development" },
@@ -138,60 +130,62 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <div key={link.to} className="relative group">
-                <Link
-                  to={link.to}
-                  className={`px-4 py-2.5 rounded-md font-medium flex items-center transition-all ${
-                    location.pathname === link.to
-                      ? "text-indigo-600 bg-indigo-50"
-                      : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                  }`}
-                >
-                  <span className="mr-2">{link.icon}</span>
-                  {link.text}
-                </Link>
+                {link.isDropdown ? (
+                  <div className="relative" ref={servicesDropdownRef}>
+                    <button
+                      onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                      className={`px-4 py-2.5 rounded-md font-medium flex items-center transition-all ${
+                        isServicesDropdownOpen
+                          ? "text-indigo-600 bg-indigo-50"
+                          : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
+                      }`}
+                    >
+                      <span className="mr-2">{link.icon}</span>
+                      {link.text}
+                      {isServicesDropdownOpen ? (
+                        <FaChevronUp className="ml-2 text-gray-500 text-xs" />
+                      ) : (
+                        <FaChevronDown className="ml-2 text-gray-500 text-xs" />
+                      )}
+                    </button>
+                    <AnimatePresence>
+                      {isServicesDropdownOpen && (
+                        <motion.div
+                          className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {servicesLinks.map((service) => (
+                            <Link
+                              key={service.text}
+                              to={service.to}
+                              className="block px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+                              onClick={() => setIsServicesDropdownOpen(false)}
+                            >
+                              {service.text}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    to={link.to}
+                    className={`px-4 py-2.5 rounded-md font-medium flex items-center transition-all ${
+                      location.pathname === link.to
+                        ? "text-indigo-600 bg-indigo-50"
+                        : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    }`}
+                  >
+                    <span className="mr-2">{link.icon}</span>
+                    {link.text}
+                  </Link>
+                )}
               </div>
             ))}
-            {/* Services Dropdown */}
-            <div className="relative group" ref={servicesDropdownRef}>
-              <button
-                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-                className={`px-4 py-2.5 rounded-md font-medium flex items-center transition-all ${
-                  isServicesDropdownOpen
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                }`}
-              >
-                <span className="mr-2"><FaUserFriends className="text-lg" /></span>
-                Services
-                {isServicesDropdownOpen ? (
-                  <FaChevronUp className="ml-2 text-gray-500 text-xs" />
-                ) : (
-                  <FaChevronDown className="ml-2 text-gray-500 text-xs" />
-                )}
-              </button>
-              <AnimatePresence>
-                {isServicesDropdownOpen && (
-                  <motion.div
-                    className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {servicesLinks.map((service) => (
-                      <Link
-                        key={service.text}
-                        to={service.to}
-                        className="block px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
-                        onClick={() => setIsServicesDropdownOpen(false)}
-                      >
-                        {service.text}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </div>
 
           {/* Right Side Actions */}
@@ -332,7 +326,7 @@ const Navbar = () => {
           >
             <div className="container mx-auto px-4 py-4">
               {/* Mobile Search */}
-              <form onSubmit={handleSearch} className="relative mb-4">
+              {/* <form onSubmit={handleSearch} className="relative mb-4">
                 <input
                   type="text"
                   placeholder="Search..."
@@ -341,70 +335,71 @@ const Navbar = () => {
                   className="w-full p-3 pl-10 pr-4 border border-gray-200 bg-gray-50 text-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
                 />
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              </form>
+              </form> */}
 
               <div className="flex flex-col space-y-1">
                 {navLinks.map((link) => (
                   <React.Fragment key={link.to}>
-                    <Link
-                      to={link.to}
-                      className={`px-4 py-3 rounded-md font-medium flex items-center ${
-                        location.pathname === link.to
-                          ? "bg-indigo-50 text-indigo-600"
-                          : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="mr-3">{link.icon}</span>
-                      {link.text}
-                    </Link>
+                    {link.isDropdown ? (
+                      <div className="relative">
+                        <button
+                          onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                          className={`px-4 py-3 rounded-md font-medium flex items-center w-full text-left ${
+                            isServicesDropdownOpen
+                              ? "bg-indigo-50 text-indigo-600"
+                              : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                          }`}
+                        >
+                          <span className="mr-3">{link.icon}</span>
+                          {link.text}
+                          {isServicesDropdownOpen ? (
+                            <FaChevronUp className="ml-auto text-gray-500 text-xs" />
+                          ) : (
+                            <FaChevronDown className="ml-auto text-gray-500 text-xs" />
+                          )}
+                        </button>
+                        <AnimatePresence>
+                          {isServicesDropdownOpen && (
+                            <motion.div
+                              className="pl-8 flex flex-col bg-indigo-50 rounded-md mt-1"
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {servicesLinks.map((service) => (
+                                <Link
+                                  key={service.text}
+                                  to={service.to}
+                                  className="px-4 py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
+                                  onClick={() => {
+                                    setIsServicesDropdownOpen(false);
+                                    setIsOpen(false);
+                                  }}
+                                >
+                                  {service.text}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        to={link.to}
+                        className={`px-4 py-3 rounded-md font-medium flex items-center ${
+                          location.pathname === link.to
+                            ? "bg-indigo-50 text-indigo-600"
+                            : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span className="mr-3">{link.icon}</span>
+                        {link.text}
+                      </Link>
+                    )}
                   </React.Fragment>
                 ))}
-                {/* Services Dropdown in Mobile */}
-                <div className="relative">
-                  <button
-                    onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-                    className={`px-4 py-3 rounded-md font-medium flex items-center w-full text-left ${
-                      isServicesDropdownOpen
-                        ? "bg-indigo-50 text-indigo-600"
-                        : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-                    }`}
-                  >
-                    <span className="mr-3"><FaUserFriends className="text-lg" /></span>
-                    Services
-                    {isServicesDropdownOpen ? (
-                      <FaChevronUp className="ml-auto text-gray-500 text-xs" />
-                    ) : (
-                      <FaChevronDown className="ml-auto text-gray-500 text-xs" />
-                    )}
-                  </button>
-                  <AnimatePresence>
-                    {isServicesDropdownOpen && (
-                      <motion.div
-                        className="pl-8 flex flex-col bg-indigo-50 rounded-md mt-1"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {servicesLinks.map((service) => (
-                          <Link
-                            key={service.text}
-                            to={service.to}
-                            className="px-4 py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
-                            onClick={() => {
-                              setIsServicesDropdownOpen(false);
-                              setIsOpen(false);
-                            }}
-                          >
-                            {service.text}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
                 {isLoggedIn ? (
                   <>
                     <div className="border-t border-gray-200 my-2"></div>
